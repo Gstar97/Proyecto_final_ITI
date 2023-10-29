@@ -2,7 +2,7 @@
 
 require_once ("clases/Cliente.php");
 
-$objCliente = Cliente::datoCliente();
-var_dump($objCliente);
+$clientes = Cliente::datoCliente();
+echo json_encode($clientes);
 
 ?>

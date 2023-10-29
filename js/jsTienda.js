@@ -1,3 +1,32 @@
+window.addEventListener("load", inicio);
+
+function inicio(){
+    let viandas = [
+        {imagen: "imagenes/viandas/alubias_blancas.jpg", nombre: "Anchoas con pure", precio: 190.000, dieta: "celiacos"},
+        {imagen: "imagenes/viandas/alubias_blancas.jpg", nombre: "Pollo con salame", precio: 123.000, dieta: "celiacos"},
+        {imagen: "imagenes/viandas/alubias_blancas.jpg", nombre: "Aluminio a la parrilla", precio: 156.000, dieta: "celiacos"},
+        {imagen: "imagenes/viandas/alubias_blancas.jpg", nombre: "Sopa de murcielago", precio: 1, dieta: "celiacos"},
+        {imagen: "imagenes/viandas/alubias_blancas.jpg", nombre: "Jamon con dulce de leche", precio: 190.000, dieta: "celiacos"}
+    ];
+    for (let i = 0; i < viandas.length; i++) {
+        $("#zonaMenu").append(`
+        <section class="baseMenu col-8 col-sm-6 col-md-3 col-lg-2 mx-1 mx-md-3 mx-lg-3 py-3 mt-3 justify-content-center" id="`+viandas[i].dieta+`">
+            <img class="w-100 mb-2" src="`+viandas[i].imagen+`">
+            <h4 class="text-center">`+viandas[i].nombre+`</h4>
+            <h5 class="text-center">`+viandas[i].precio+`U$</h5>
+            <p>No Disponible</p>  
+            <p>Dieta `+viandas[i].dieta+`</p> 
+            <input type="button" class="btnCarrito col-12 py-2" id="btn" value="Agregar al carrito"> 
+        </section>
+        `
+        );
+        console.log(viandas[i]);
+    }
+
+
+    
+}
+
 $("#btnAbrirModal").click(abrirModalCreacion);
 $("#cerrarFondoCreacion").click(cerrarFondoCreacion);
 $("#btnCrearMenu").click(crearVianda);
@@ -47,7 +76,7 @@ function crearVianda(){
     let precio = ($("#txtPrecio").val());
     let asignarDieta = ($("#asignDieta").val());
 
-    if(imagen == "" && nombre == ""&& precio == ""){ //si algun input no esta completa no funcionara
+    if(imagen == "" && nombre == ""&& precio == ""){ //si algun input no esta completo no funcionara
     }else{
         $("#zonaMenu").append(`
         <section class="baseMenu col-8 col-sm-6 col-md-3 col-lg-2 mx-1 mx-md-3 mx-lg-3 py-3 mt-3 justify-content-center" id="`+asignarDieta+`">
@@ -62,6 +91,9 @@ function crearVianda(){
         );
     }
 }
+
+
+//
 /*filtro de Dietas*/
 function filtroDieta() {
     let selectDietas = ($("#selectDietas").val());
@@ -109,7 +141,7 @@ function filtroDieta() {
             document.getElementById("ovolacteovegetariana").style.display = "block";
         break;
     }
-    
 }
+    
 
 
