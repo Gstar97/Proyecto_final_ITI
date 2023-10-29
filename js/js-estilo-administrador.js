@@ -9,38 +9,30 @@ function inicio() {
     }
     clientes.send();
 }
-/*variables generales*/
-
-let btnPedido = document.getElementById("btnPedido");
-let btnUsuario = document.getElementById("btnUsuario");
-/*Variables de la tabla Usuario*/
-let tablaUsuario = document.getElementById("tablaUsuario");//Tabla general
-let filaCliente1 = document.getElementById("filaCliente1");//las filas
-let columnaClienteCheckBox = document.getElementById("columnaClienteCheckBox");//Columna de todos los checkbox
-let checkBoxCliente1 = document.getElementById("checkBoxCliente1"); //Checkbox
-/*Variables de la tabla Pedido*/
-let tablaPedido = document.getElementById("tablaPedido");//Tabla general
-let filaPedido1 = document.getElementById("filaPedido1");//las filas
-let columnaPedidoCheckBox = document.getElementById("columnaPedidoCheckBox");//Columna de todos los checkbox
-let checkBoxPedido1 = document.getElementById("checkBoxPedido1"); //Checkbox
+/*variables para poder ingresar a la tablas*/
+let btnPedido = $("#btnPedido")
+let btnUsuario = $("#btnUsuario")
+/*Variables de la tabla*/
+let tablaUsuario = $("#tablaUsuario")
+let tablaPedido = $("#tablaPedido")
 
 //Desaparece las tablas
-tablaPedido.style.display = "none";
-tablaUsuario.style.display = "none";
-
+$(tablaUsuario).css("display", "none");
+$(tablaPedido ).css("display", "none");
 
 //Cambiar a la tabla  Pedido
-btnPedido.onclick = function () {
-    tablaPedido.style.animation = "aparecerTabla 0.5s ease-out 0s normal";
-    tablaPedido.style.display = "block";
-    tablaUsuario.style.display = "none";
-
+btnPedido.click (mostrarTablaPedido) ;
+function mostrarTablaPedido(){
+    $(tablaPedido).css({"animation":"aparecerTabla 0.5s ease-out 0s normal"});
+    $(tablaUsuario).css("display", "none");
+    $(tablaPedido).css("display", "block");
 }
 //Cambiar a la tabla  Usuario
-btnUsuario.onclick = function () {
-    tablaUsuario.style.animation = "aparecerTabla 0.5s ease-out 0s normal";
-    tablaPedido.style.display = "none";
-    tablaUsuario.style.display = "block";
+btnUsuario.click (mostrarTablaUsuario);
+function mostrarTablaUsuario() {
+    $(tablaUsuario).css({"animation":"aparecerTabla 0.5s ease-out 0s normal"});
+    $(tablaUsuario).css("display", "block");
+    $(tablaPedido).css("display", "none");
 }
 
 let listaDeClientes = [
