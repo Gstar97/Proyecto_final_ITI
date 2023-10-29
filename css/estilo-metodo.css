@@ -1,0 +1,30 @@
+body{
+    background:#111111 url(../imagenes/fondos/fondo-metodo.jpg) no-repeat !important;
+    background-size:100% !important;
+}
+.baseMetodos p, h3, h4{
+    color:#FFFFFF;
+}
+
+input{
+    background:rgba(255, 255, 255, 0.2);
+    outline:none;
+    border-radius:5px;
+    border:1px solid #FFFFFF;
+}
+input::placeholder{
+    color:#ffffff;
+}
+.linkVolver{
+    border-radius:10px;
+    border:1px solid #FF6200;
+    background:rgba(255, 98, 0, 0.2);
+    color:#FFFFFF;
+    text-decoration:none;
+}
+.btnPagar{
+    border-radius:10px;
+    border:1px solid #ffffff;
+    background:rgba(255, 255, 255, 0.2);
+    color:#FFFFFF;
+}

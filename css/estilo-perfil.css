@@ -1,0 +1,12 @@
+body{
+    background:#111111 url(../imagenes/fondos/fondo-perfil.jpg) no-repeat !important;
+    background-size:100% !important;
+}
+.fondoImagen{
+    border-radius:10px;
+    border:1px solid #FFFFFF;
+    background:rgba(255,255,255, 0.2);
+}
+.datos{
+    color:#FFFFFF;
+}
