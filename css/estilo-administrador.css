@@ -36,10 +36,7 @@ img[src="imagenes/titulo+empresa.png"]{
 #btnPedido:active{
     background:rgba(255,255,255, 0.2);
 }
-/*Ingresar ID*/
-#tomarId::placeholder{
-    
-}
+
 #tomarId{
     background:rgba(255,255,255, 0.2);
     border:1px solid #FFFFFF;
