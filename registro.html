@@ -31,53 +31,57 @@
                 </section>
             </nav>
         </header>
-        <h4 class="text-center mt-5">¿Como quiere registrarse?</h4>
-        <section class="row justify-content-center my-3  mx-0">
-            <input type="button" value="Cliente" id="BtnCliente" class="BtnCliente col-2 mx-2">
-            <input type="button" value="Empresa" id="BtnEmpresa" class="BtnEmpresa col-2 mx-2">
+        <section class="row justify-content-center mt-3  mx-0">
+            <h4 class="text-center mt-5">¿Como quiere registrarse?</h4>
+            <input type="button" value="Cliente" id="BtnCliente" class="BtnCliente col-4 col-md-2 col-lg-2 mx-2 my-2">
+            <input type="button" value="Empresa" id="BtnEmpresa" class="BtnEmpresa col-4 col-md-2 col-lg-2 mx-2 my-2">
         </section>
         
         <section class="row justify-content-center text-center mx-0">
-            <section id="FormularioCliente" class="col-4 mt-3 px-0">
+            <section id="FormularioCliente" class="col-8 col-sm-7 col-md-5 col-lg-4 mt-3 px-0">
                 <h4>Cliente</h4>
-                <input class="input mt-2 col-10" type="text " placeholder="Cedula Identidad" maxlength="8" id="txtCedula_Web">
-                <input class="input mt-2 col-10" type="text" placeholder="Email" id="txtEmail_Web">
-                <input class="input mt-2 col-10" type="text " placeholder="Telefono" id="txtTelefono_Web">
+                <input class="input mt-2 col-10" type="text " placeholder="Cedula Identidad" id="txtCedula">
+                <input class="input mt-2 col-10" type="text" placeholder="Email" id="txtEmail">
+                <input class="input mt-2 col-10" type="text " placeholder="Telefono" id="txtSegundaContraseña">
 
-                <input class="input mt-4 col-5" type="text" placeholder="Nombre" id="txtNombre">
-                <input class="input mt-4 col-5" type="text" placeholder="Apellido" id="txtApellido">
+                <input class="input mt-3 col-5" type="text" placeholder="Nombre" id="txtNombre">
+                <input class="input mt-3 col-5" type="text" placeholder="Apellido" id="txtApellido">
 
-                <input class="input mt-1 col-5" type="text " placeholder="Barrio" id="txtBarrio_Web">
-                <input class="input mt-1 col-5" type="text" placeholder="Calle" id="txtCalle_Web">
-                <input class="input mt-1 col-5" type="text" placeholder="N°Puerta" id="txtPuerta_Web">
-                <input class="input mt-1 col-5" type="text" placeholder="Esquina" id="txtEsquina_Web">
+                <input class="input mt-1 col-5" type="text " placeholder="Barrio" id="txtBarrio">
+                <input class="input mt-1 col-5" type="text" placeholder="Calle" id="txtCalle">
+                <input class="input mt-1 col-5" type="text" placeholder="N°Puerta" id="txtNPuerta">
+                <input class="input mt-1 col-5" type="text" placeholder="Esquina" id="txtEsquina">
                 
-                <input class="input mt-1 col-5" type="text " placeholder="Contraseña" id="txtClave_Web">
-                <input class="input mt-1 col-5" type="text " placeholder="Repetir contraseña" id="txtConfirmarClave_Web">
+                <input class="input mt-1 col-5" type="text " placeholder="Contraseña" id="txtPrimeraContraseña">
+                <input class="input mt-1 col-5" type="text " placeholder="Repetir contraseña" id="txtSegundaContraseña">
                 
-                <input class="my-3 py-2 col-4"type="button" value="REGISTRARSE" id="BtnClienteRegistrar" id="BtnClienteRegistrar">
+                <input class="my-3 py-2 col-4"type="submit" value="REGISTRARSE" id="BtnClienteRegistrar" id="BtnClienteRegistrar">
                 <p class="col-12">Aceptar <a href="#">Terminos y condiciones</a><input type="checkbox" id="aceptarTerminos" class="ms-3"></p>
-            
             </section>
     
-            <section id="FormularioEmpresa" class="col-4 mt-3 ">
+            <section id="FormularioEmpresa" class="col-8 col-sm-7 col-md-5 col-lg-4 mt-3">
                 <h4>Empresa</h4>
-                <input class="input1 mt-2 col-10" type="text " placeholder="Cedula Identidad" id="txtCedula_Empresa" maxlength="8">
-                <input class="input1 mt-2 col-10" type="text" placeholder="Email" id="txtEmail_Empresa">
-                <input class="input1 mt-2 col-10" type="text " placeholder="Telefono" id="txtTelefono_Empresa">
+                <input class="input1 mt-2 col-10" type="text " placeholder="Cedula Identidad" id="txtCedulaE">
+                <input class="input1 mt-2 col-10" type="text" placeholder="Email" id="txtEmail">
+                <input class="input1 mt-2 col-10" type="text " placeholder="Telefono" id="txtSegundaContraseña">
                 <input class="input1 mt-2 mb-1 col-10" type="text" placeholder="Rut" id="txtRut">
                 
-                <input class="input1 mt-2 col-5" type="text " placeholder="Barrio" id="txtBarrio_Empresa">
-                <input class="input1 mt-2 col-5" type="text" placeholder="Calle" id="txtCalle_Empresa">
-                <input class="input1 mt-1 col-5" type="text" placeholder="N°Puerta" id="txtPuerta_Empresa">
-                <input class="input1 mt-1 col-5" type="text" placeholder="Esquina" id="txtEsquina_Empresa">
+                <input class="input1 mt-2 col-5" type="text " placeholder="Barrio" id="txtBarrio">
+                <input class="input1 mt-2 col-5" type="text" placeholder="Calle" id="txtCalle">
+                <input class="input1 mt-1 col-5" type="text" placeholder="N°Puerta" id="txtNPuerta">
+                <input class="input1 mt-1 col-5" type="text" placeholder="Esquina" id="txtEsquina">
                 
-                <input class="input1 mt-1 col-5" type="text " placeholder="Contraseña" id="txtClave_Empresa">
-                <input class="input1 mt-1 col-5" type="text " placeholder="Repetir contraseña" id="txtConfirmarClave_Empresa">
+                <input class="input1 mt-1 col-5" type="text " placeholder="Contraseña" id="txtPrimeraContraseña">
+                <input class="input1 mt-1 col-5" type="text " placeholder="Repetir contraseña" id="txtSegundaContraseña">
 
-                <input class="my-3 py-2 col-4"type="button" value="REGISTRARSE" id="BtnEmpresaRegistrar">
+                <input class="my-3 py-2 col-4"type="submit" value="REGISTRARSE" id="BtnEmpresaRegistrar">
                 <p class="col-12">Aceptar <a href="#">Terminos y condiciones</a><input type="checkbox" id="aceptarTerminos" class="ms-3"></p>
             </section>
+            
+
+        </section>
+        <section class="row mx-0 justify-content-center">
+            <p class="col-2 py-1 text-center" id="mensaje">Hola</p>
         </section>
     </from>
     

@@ -21,7 +21,7 @@
             <img src="imagenes/logo+empresa.png" alt="Logo" width="80" class="d-inline-block align-text-center">
             <img src="imagenes/titulo+empresa.png" alt="Logo" width="100" class="d-inline-block align-text-center">
           </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menu"
+          <button class="botonMenuResponsive navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menu"
             aria-controls="offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -33,7 +33,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </section>
             <section class="offcanvas-header">
-              <img class="mx-auto" src="imagenes/logo+titulo+empresa.png" alt="Logo" width="150" height="150">
+              <img class="mx-auto" src="imagenes/logo+empresa.png" alt="Logo" width="150" height="150">
             </section>
             <section class="offcanvas-body">
               <ul class="navbar-nav justify-content-end align-items-center flex-grow-1 pe-3">
@@ -46,7 +46,7 @@
                   </a>
                 </li>
                 <li id="linkTienda" class=" nav-item me-2">
-                  <a class="nabBoton nav-link px-3 py-3 d-flex" href="tienda.html">
+                  <a class="nabBoton nav-link px-3 py-3 d-flex" href="#">
                     <svg class="me-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
                       <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
                     </svg>
@@ -54,7 +54,7 @@
                   </a>
                 </li>
                 <li id="linkCarrito" class="nav-item me-4">
-                  <a class="nabBoton nav-link px-3 py-3 d-flex" href="carrito.html">
+                  <a class="nabBoton nav-link px-3 py-3 d-flex" href="#">
                     <svg class="me-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                       <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                     </svg>
@@ -87,7 +87,7 @@
     </header>
     <!--Categorias-->
     <section class="baseOpciones row mx-0 py-5 justify-content-center text-center">
-        <select class="col-2 mx-2 "id="selectDietas">
+        <select class="col-4 col-sm-2 col-md-2 col-lg-2 mx-2 "id="selectDietas">
             <option value="todo_dietas">Todo</option>
             <option value="celiacos">Celiacos</option>
             <option value="vegana">Vegana</option>
@@ -95,58 +95,25 @@
             <option value="ovovegetaria">Ovovegetaria</option>
             <option value="ovolacteovegetariana">Ovolacteovegetariana</option>
         </select>
-        <input type="text" placeholder="Busqueda" class="col-3 mx-2" id="buscador">
-        <input type="button" value="Buscar" class="btnBuscarTienda col-2 mx-2" id="btnBuscarTienda">
-        <input type="button" value="Crear Menu" class="btnBuscarTienda col-2 mx-2" id="btnAbrirModal">
+        <input type="text" placeholder="Busqueda" class="col-3 col-sm-3 col-md-3 col-lg-3 mx-2" id="buscador">
+        <input type="button" value="Buscar" class="btnBuscarTienda col-3 col-sm-2 col-md-2 col-lg-2 mx-2" id="btnBuscarTienda">
+        <input type="button" value="Crear Menu" class="btnBuscarTienda col-10 col-sm-8 col-md-5 col-lg-5 mt-3 mx-2" id="btnAbrirModal">
     </section>
     <!--Comidas-->
-    <section class="row mx-0 my-4" id="zonaMenu">
-        <section class="baseMenu col-2 mx-3 py-3 justify-content-center" id="celiacos">
+    <section class="row mx-0 my-2 justify-content-center" id="zonaMenu">
+        <section class="baseMenu col-8 col-sm-6 col-md-3 col-lg-2 mx-1 mx-md-3 mx-lg-3 py-3 mt-3 justify-content-center" id="celiacos">
             <img class="w-100 mb-2" src="imagenes/viandas/PastelDeCarnePicada.jpg">
             <h4 class="text-center">celiacos</h4>
             <h5 class="text-center">20 U$</h5>
             <p>Disponible</p>
             <p>Dieta celiacos</p>
-            <input type="button" class="btnCarrito col-12 py-2" id="btn" value="Agregar al carrito">
-        
-        </section>
-        <section class="baseMenu col-2 mx-3 py-3 justify-content-center" id="vegana">
-          <img class="w-100 mb-2" src="imagenes/viandas/PastelDeCarnePicada.jpg">
-          <h4 class="text-center">vegana</h4>
-          <h5 class="text-center">20 U$</h5>
-          <p>Disponible</p>
-          <p>Dieta vegana</p>
-          <input type="button" class="btnCarrito col-12 py-2" id="btn" value="Agregar al carrito">
-      
-        </section>
-        <section class="baseMenu col-2 mx-3 py-3 justify-content-center" id="vegetariana">
-          <img class="w-100 mb-2" src="imagenes/viandas/PastelDeCarnePicada.jpg">
-          <h4 class="text-center">vegetariana</h4>
-          <h5 class="text-center">20 U$</h5>
-          <p>Disponible</p>
-          <p>Dieta vegetariana</p>
-          <input type="button" class="btnCarrito col-12 py-2" id="btn" value="Agregar al carrito">
-        </section>
-        <section class="baseMenu col-2 mx-3 py-3 justify-content-center" id="ovovegetaria">
-          <img class="w-100 mb-2" src="imagenes/viandas/PastelDeCarnePicada.jpg">
-          <h4 class="text-center">ovovegetaria</h4>
-          <h5 class="text-center">20 U$</h5>
-          <p>Disponible</p>
-          <p>Dieta ovovegetaria</p>
-          <input type="button" class="btnCarrito col-12 py-2" id="btn" value="Agregar al carrito">
-        </section>
-        <section class="baseMenu col-2 mx-3 py-3 justify-content-center" id="ovolacteovegetariana">
-          <img class="w-100 mb-2" src="imagenes/viandas/PastelDeCarnePicada.jpg">
-          <h4 class="text-center">ovolacteovegetariana</h4>
-          <h5 class="text-center">20 U$</h5>
-          <p>Disponible</p>
-          <p>Dieta ovolacteovegetariana</p>
-          <input type="button" class="btnCarrito col-12 py-2" id="btn" value="Agregar al carrito">
+            <input type="button" class="btnCarrito col-12 py-2" id="btnCarrito" value="Agregar al carrito">
         </section>
     </section>
     <!--Modal-->
     <section class="row mx-0 fixed-top justify-content-center align-items-center" id="fondoModal">
-      <section class="col-6 text-center py-4" id="modalBase">
+      <!--Creacion del menu-->
+      <section class="col-8 col-sm-6 col-md-6 col-lg-6 text-center py-4" id="modalBase">
         <input type="text" placeholder="imagen" class="col-12 mt-2" id="txtImagen">
         <input type="text" placeholder="Nombre" class="col-6 mt-2" id="txtNombre">
         <input type="text" placeholder="Precio" class="col-3 mt-2" id="txtPrecio">
@@ -159,9 +126,17 @@
             <option value="ovolacteovegetariana">Ovolacteovegetariana</option>
         </select>
         </p>
-        <span class="py-1 px-1 mx-2 col-6" id="cerrarFondo">Cerrar</span>
-        <input type="button" value="Ingresar a la base de datos" class="col-4 mt-3 mx-2 " id="btnCrearMenu">
+        <span class="py-1 px-1 mx-2 col-6" id="cerrarFondoCreacion">Cerrar</span>
+        <input type="button" value="Crear" class="col-4 mt-3 mx-2 " id="btnCrearMenu">
       </section>
+       <!--asignacion de stock-->
+       <section class="col-8 col-sm-6 col-md-6 col-lg-6 text-center py-4" id="modalStock">
+          <h2 class="mb-3">Ingrese stock</h2>
+          <input type="text" name="txtStock"><br><br>
+          <input type="button" value="enviar al carrito" id="btnAltaCarrito"><br><br>
+          <p id="mensajeError"></p><br>
+          <span class="py-1 px-1 mx-2 col-6" id="cerrarFondoStock">Cerrar</span>
+       </section>
     </section>
     <!--Pie de pagina-->
     <footer>

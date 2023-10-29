@@ -1,6 +1,6 @@
 body{
     background:#111111 url(../imagenes/fondos/fondo-login.jpg) no-repeat !important;
-    background-size:100% !important;
+    background-size:150% !important;
 }
 h1{
     color:#FFFFFF;
@@ -47,3 +47,10 @@ h1{
 }
 
 
+/*mensaje*/
+#mensaje{
+    color:#FFFFFF;
+    border-radius:10px;
+    border:1px solid red;
+    background:rgb(255, 0, 0, 0.2);
+}

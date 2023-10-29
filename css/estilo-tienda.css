@@ -1,6 +1,5 @@
 body{
-    background:#111111 url(../imagenes/fondos/fondo-index.jpg) no-repeat !important;
-    background-size:100% !important;
+    background:#111111;
 }
 /*filtros parametros*/
 .baseOpciones{
@@ -16,9 +15,9 @@ body{
 #buscador{
     outline:none;
     border-radius:10px;
-    color:#FFFFFF;
+   
     border:1px solid #ffffff;
-    background:rgba(255, 255, 255, 0.2);
+    
 }
 .btnBuscarTienda{
     border-radius:5px;
@@ -76,12 +75,12 @@ body{
     border:1px solid #FFFFFF;
 }
 #modalBase > input[type="text"]::placeholder{
-    color:#FFFFFF;
+    color:#1D1D1D;
 }
 #modalBase > input[type="text"]{
     outline:none;
     border:1px solid #FFFFFF;
-    background:rgba(255, 255, 255, 0.2);
+   
     color:#FFFFFF;
 }
 #modalBase > input[type="button"]{
@@ -91,6 +90,33 @@ body{
     color:#FFFFFF;
     outline:none;
 }
-#modalBase > input[type="button"]:active{
-    background:rgba(255, 98, 0, 0.2)
+/*Modal Stock*/
+#modalStock{
+    border-radius:10px;
+    border:1px solid #FFFFFF;
+    background:rgba(255, 255, 255, 0.2);
+}
+#modalStock h2{
+    color:#FFFFFF;
+}
+#modalStock span{
+    border-radius:10px;
+    color:#FFFFFF;
+    border:1px solid #FFFFFF;
+}
+#modalStock span:hover{
+    background:rgba(255, 255, 255, 0.2);
+}
+#modalStock input[type="button"]{
+    border-radius:5px;
+    border:1px solid #FF6200;
+    background:transparent;
+    color:#FFFFFF;
+    outline:none;
+}
+#modalStock input[type="button"]:hover{
+    box-shadow:0px 0px 5px #FF6200;
+}
+#modalStock input[type="button"]:active{
+    background:rgba(255, 98, 0, 0.2);
 }

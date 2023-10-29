@@ -1,19 +1,41 @@
-$("#btnAbrirModal").click(abrirModal);
-$("#cerrarFondo").click(cerrarFondo);
+$("#btnAbrirModal").click(abrirModalCreacion);
+$("#cerrarFondoCreacion").click(cerrarFondoCreacion);
 $("#btnCrearMenu").click(crearVianda);
 $("#btnBuscarTienda").click(filtroDieta)
+$("#btnCarrito").click(abrirModalStock)
+$("#cerrarFondoStock").click(cerrarFondoStock);
+
 let modalBase = document.getElementById("modalBase");
+let modalStock = document.getElementById("modalStock");
 let fondoModal = document.getElementById("fondoModal");
+modalStock.style.display = "none";
 modalBase.style.display = "none";
 fondoModal.style.backgroundColor = "transparent"
-// Clic para abrir el modal
-function abrirModal(){
-    modalBase.style.display = "block";
+
+// Click para abrir el modal Stock
+function abrirModalStock(){
+    modalStock.style.display = "block";
+    modalBase.style.display = "none";
     fondoModal.style.zIndex = "9"
     fondoModal.style.backgroundColor = "rgba(0, 0, 0, 0.8)"
 }
-// Clic sobre <span> para cerrar modal
-function cerrarFondo(){
+// Clic sobre <span> para cerrar el modal Stock
+function cerrarFondoStock(){
+    modalStock.style.display = "none";
+    fondoModal.style.zIndex = "-1"
+    fondoModal.style.backgroundColor = "transparent"
+}
+// Clic para abrir el modal Creacion de menus
+function abrirModalCreacion(){
+    modalStock.style.display = "none";
+    modalBase.style.display = "block";
+    
+    fondoModal.style.zIndex = "9"
+    fondoModal.style.backgroundColor = "rgba(0, 0, 0, 0.8)"
+}
+// Clic sobre <span> para cerrar el modal creacion de menus
+function cerrarFondoCreacion(){
+    modalStock.style.display = "none";
     modalBase.style.display = "none";
     fondoModal.style.zIndex = "-1"
     fondoModal.style.backgroundColor = "transparent"
@@ -28,9 +50,9 @@ function crearVianda(){
     if(imagen == "" && nombre == ""&& precio == ""){ //si algun input no esta completa no funcionara
     }else{
         $("#zonaMenu").append(`
-        <section class="baseMenu col-2 mx-3 py-3 justify-content-center" id="`+asignarDieta+`">
-            <img class="w-100 pb-2" src="`+imagen+`">
-            <h4>`+nombre+`</h4>
+        <section class="baseMenu col-8 col-sm-6 col-md-3 col-lg-2 mx-1 mx-md-3 mx-lg-3 py-3 mt-3 justify-content-center" id="`+asignarDieta+`">
+            <img class="w-100 mb-2" src="`+imagen+`">
+            <h4 class="text-center">`+nombre+`</h4>
             <h5 class="text-center">`+precio+`U$</h5>
             <p>No Disponible</p> 
             <p>Dieta `+asignarDieta+`</p> 

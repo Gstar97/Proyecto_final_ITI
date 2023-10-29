@@ -1,6 +1,6 @@
 body{
     background:#111111 url(../imagenes/fondos/fondo-registro.jpg) no-repeat !important;
-    background-size:100% !important;
+    background-size:150% !important;
 }
 h4{
     color:#FFFFFF;
@@ -177,4 +177,11 @@ h4{
     background:#ffffff;
     position:absolute;
     z-index:1;
+}
+/*mensaje*/
+#mensaje{
+    color:#FFFFFF;
+    border-radius:10px;
+    border:1px solid red;
+    background:rgb(255, 0, 0, 0.2);
 }

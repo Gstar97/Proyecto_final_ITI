@@ -5,10 +5,21 @@ header nav section a img[src="imagenes/logo+empresa.png"]{
     filter: brightness(200%);
     filter:contrast(100%);
 }
+.botonMenuResponsive{
+    box-shadow:0px 0px 2px #FFFFFF;
+}
+.botonMenuResponsive span{
+    filter:invert(100%);
+}
+.offcanvas{
+    background:#1D1D1D;
+}
+
 .header{
     background:#1D1D1D;
     box-shadow:0px 0px 15px #2B2B2B;
 }
+
 .nabBoton{
     color:#FFFFFF !important;  
     font-family:Helvetica;
