@@ -4,15 +4,15 @@ require_once("Usuario.php");
 
 class Cliente extends Usuario{
     
-    private $nombre;
-    private $apellido;
-    private $rut;
-    private $calle;
-    private $telefono;
-    private $puerta;
-    private $esquina;
-    private $barrio;
-    private $tipoCliente;
+    public $nombre;
+    public $apellido;
+    public $rut;
+    public $calle;
+    public $telefono;
+    public $puerta;
+    public $esquina;
+    public $barrio;
+    public $tipoCliente;
 
     public function __construct($nombre,$apellido,$rut,$ci,$email,$telefono,$calle,$puerta,$esquina,$barrio,$clave,$tipoCliente){
         $this -> nombre = $nombre;
@@ -97,7 +97,7 @@ class Cliente extends Usuario{
         $clientes = [];
         
         while ($row = $res->fetch_assoc()){
-            $cliente = new Cliente($row['ci'],$row['nombre'],$row['apellido'],$row['email'],$row['telefono'],$row['rut'],$row['barrio'],$row['esquina'],$row['calle'],$row['puerta'],$row['clave'],$row['tipo_cliente']);
+            $cliente = new Cliente($row['nombre'],$row['apellido'],$row['rut'],$row['ci'],$row['email'],$row['telefono'],$row['calle'],$row['puerta'],$row['esquina'],$row['barrio'],$row['clave'],$row['tipo_cliente']);
             array_push($clientes, $cliente);
         }
         return $clientes;

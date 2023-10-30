@@ -2,9 +2,9 @@
 
 require_once("Conexion.php");
 class Usuario extends Conexion {
-    protected $ci;
-    protected $clave;
-    protected $email;
+    public $ci;
+    public $clave;
+    public $email;
 
     public function getCi(){
         return $this -> ci;
