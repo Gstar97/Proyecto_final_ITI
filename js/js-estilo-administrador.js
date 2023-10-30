@@ -1,11 +1,13 @@
 window.addEventListener("load", inicio);
 
+
 function inicio() {
     let url = "php/alta.php";
     fetch(url)
     .then(response => response.json())
     .then(data => {
         for (let i = 0; i < data.length; i++) {
+            
             $("#tabla1").append(` 
             <tr id="`+ i + `">
                 <td class="bordeUsuario">`+i+ `</td>
