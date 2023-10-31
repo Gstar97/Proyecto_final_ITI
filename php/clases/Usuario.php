@@ -25,7 +25,6 @@ class Usuario extends Conexion {
         $this -> clave = $clave;
     }
 }
-
-
-
 ?>
+
+

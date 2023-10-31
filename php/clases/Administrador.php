@@ -3,7 +3,7 @@
 require_once("Usuario.php");
 
 class Administrador extends Usuario {
-    private $rol = "Administrador";
+    private $rol;
 
         public function __construct($ci,$email,$rol,$clave){
             $this -> ci = $ci;
@@ -19,8 +19,7 @@ class Administrador extends Usuario {
         }
        
 }
-
-
-
-
 ?>
+
+
+

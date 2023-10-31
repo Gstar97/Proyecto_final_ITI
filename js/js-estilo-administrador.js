@@ -7,6 +7,7 @@ function inicio() {
     .then(response => response.json())
     .then(data => {
         for (let i = 0; i < data.length; i++) {
+             //Cargar tabla Cliente
             $("#tabla1").append(` 
             
             <tr id="`+ i + `">
