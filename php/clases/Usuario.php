@@ -5,6 +5,7 @@ class Usuario extends Conexion {
     public $ci;
     public $clave;
     public $email;
+    public $id;
 
     public function getCi(){
         return $this -> ci;
@@ -23,6 +24,12 @@ class Usuario extends Conexion {
     }
     public function setClave($clave){
         $this -> clave = $clave;
+    }
+    public function getId(){
+        return $this -> id;
+    }
+    public function setId(){
+        $this -> id = $id;
     }
 }
 ?>

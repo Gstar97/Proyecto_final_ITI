@@ -3,49 +3,13 @@
 require_once("Usuario.php");
 
 class Cliente extends Usuario{
-    
-    public $nombre;
-    public $apellido;
-    public $rut;
     public $calle;
     public $telefono;
     public $puerta;
     public $esquina;
     public $barrio;
-    public $tipoCliente;
+    public $autorizar;
 
-    public function __construct($nombre,$apellido,$rut,$ci,$email,$telefono,$calle,$puerta,$esquina,$barrio,$clave,$tipoCliente){
-        $this -> nombre = $nombre;
-        $this -> apellido = $apellido;
-        $this -> rut = $rut;
-        $this -> ci = $ci;
-        $this -> email = $email;
-        $this -> telefono = $telefono;
-        $this -> calle = $calle;
-        $this -> puerta = $puerta;
-        $this -> esquina = $esquina;
-        $this -> barrio = $barrio;
-        $this -> clave = $clave;
-        $this -> tipoCliente = $tipoCliente;
-    }
-    public function getNombre(){
-        return $this -> nombre;
-    }
-    public function setNombre($nombre){
-        $this -> nombre = strtolower($nombre);
-    }
-    public function getApellido(){
-        return $this -> apellido;
-    }
-    public function setApellido($apellido){
-        $this -> apellido = strtolower($apellido);
-    }
-    public function getRut(){
-        return $this -> rut;
-    }
-    public function serRut(){
-        $this -> rut = strtolower($rut);
-    }
     public function getTelefono(){
         return $this -> telefono;
     }
@@ -76,31 +40,55 @@ class Cliente extends Usuario{
     public function setBarrio($barrio){
         $this -> barrio = strtolower($barrio);
     }
-    public function getTipoCliente(){
-        return $this -> tipoCliente;
+    public function getAutorizar(){
+        return $this -> autorizar;
     }
-    public function setTipoCliente(){
-        $this -> tipoCliente = strtolower($tipoCliente);
+    public function setAutorizar(){
+        $this -> autorizar = $autorizar;
     }
-    public function enviarDatos(){
-        $this->conectar();
-        $pre = mysqli_prepare($this->con,"INSERT INTO clientes (ci,nombre,apellido,email,telefono,rut,barrio,esquina,calle,puerta,clave,tipo_cliente) VALUE (?,?,?,?,?,?,?,?,?,?,?,?)");
-        $pre->bind_param("isssissssiss",$this->ci,$this->nombre,$this->apellido,$this->email,$this->telefono,$this->rut,$this->barrio,$this->esquina,$this->calle,$this->puerta,$this->clave,$this->tipoCliente);
-        $pre->execute();        
-    }
-    public static function datoCliente(){
+    public static function datosWeb(){
         $conexion = new Conexion();
-        $conexion -> conectar();
-        $pre = mysqli_prepare($conexion->con,"SELECT ci,nombre,apellido,email,telefono,rut,barrio,esquina,calle,puerta,clave,tipo_cliente FROM clientes");
+        $conexion->conectar();
+        $pre = mysqli_prepare($conexion->con, "SELECT cliente.ID_CLIENTE, cliente.EMAIL, cliente_web.CEDULA_IDENTIDAD_CLIENTE FROM cliente INNER JOIN cliente_web ON cliente.ID_CLIENTE = cliente_web.ID_CLIENTE");
+        if (!$pre) {
+            // Manejar el error de preparación de la consulta.
+            die("Error de preparación de consulta: " . mysqli_error($conexion->con));
+        }
         $pre->execute();
         $res = $pre->get_result();
         $clientes = [];
-        
+    
         while ($row = $res->fetch_assoc()){
-            $cliente = new Cliente($row['nombre'],$row['apellido'],$row['rut'],$row['ci'],$row['email'],$row['telefono'],$row['calle'],$row['puerta'],$row['esquina'],$row['barrio'],$row['clave'],$row['tipo_cliente']);
+            $cliente = [
+                'id' => $row['ID_CLIENTE'],
+                'email' => $row['EMAIL'],
+                'ci_rut' => $row['CEDULA_IDENTIDAD_CLIENTE'],
+            ];
             array_push($clientes, $cliente);
         }
         return $clientes;
     }
+    public static function datosEmpresa(){
+        $conexion = new Conexion();
+        $conexion->conectar();
+        $pre = mysqli_prepare($conexion->con, "SELECT cliente.ID_CLIENTE, cliente.EMAIL, cliente_empresa.RUT FROM cliente INNER JOIN cliente_empresa ON cliente.ID_CLIENTE = cliente_empresa.ID_CLIENTE");
+        if (!$pre) {
+            // Manejar el error de preparación de la consulta.
+            die("Error de preparación de consulta: " . mysqli_error($conexion->con));
+        }
+        $pre->execute();
+        $res = $pre->get_result();
+        $clientes = [];
+        while ($row = $res->fetch_assoc()){
+            $cliente = [
+                'id' => $row['ID_CLIENTE'],
+                'email' => $row['EMAIL'],
+                'ci_rut' => $row['RUT'],
+            ];
+            array_push($clientes, $cliente);
+        }
+        return $clientes;
+    }
+
 }
 ?>

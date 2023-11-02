@@ -1,43 +1,23 @@
 window.addEventListener("load", inicio);
-
-
 function inicio() {
-    let url = "php/alta.php";
+    let url = "php/datos_clientes.php";
     fetch(url)
     .then(response => response.json())
     .then(data => {
-        for (let i = 0; i < data.length; i++) {
-             //Cargar tabla Cliente
+        console.log(data)
+        for(let i = 0; i < data.length;i++){
             $("#tabla1").append(` 
-            
-            <tr id="`+ i + `">
-                <td class="bordeUsuario">`+i+ `</td>
-                <td class="bordeUsuario">`+ data[i].ci + `</td>
-                <td class="bordeUsuario">`+ data[i].email + `</td>
-                <td class="bordeUsuario">`+ data[i].telefono + `</td>
-                <td class="bordeUsuario">`+ data[i].rut + `</td>
-                <td class="bordeUsuario">`+ data[i].tipoCliente + `</td>
-            </tr>
-            `);
-            //Cargar tabla Pedido
-            $("#tabla2").append(` 
-            
-            <tr>
-            <td class="bordePedido col-2 col-sm-1 col-md-1 col-lg-1">`+i+`</td>
-            <td class="bordePedido col-2 col-sm-2 col-md-2 col-lg-2">`+i+`</td>
-            <td class="bordePedido col-3 col-sm-3 col-md-3 col-lg-2">`+i+`</td>
-            <td class="bordePedido col-2 col-sm-2 col-md-2 col-lg-2">`+i+`</td>
-            <td class="bordePedido col-3 col-sm-3 col-md-3 col-lg-3">`+i+`</td>
+            <tr id="`+i+`">
+                <td class="bordeUsuario">`+i+`</td>
+                <td class="bordeUsuario">`+data[i].id +`</td>
+                <td class="bordeUsuario">`+data[i].ci_rut +`</td>
+                <td class="bordeUsuario">`+data[i].email+`</td>
             </tr>
             `);
         }
-
     })
     .catch(error => console.log(error))
 }
-
-
-
 //Desaparece las tablas
 $("#tablaUsuario").css("display", "none");
 $("#tablaPedido").css("display", "none");
@@ -59,12 +39,6 @@ function mostrarTablaCliente() {
     $("#tablaPedido").css("display", "none");
     
 }
-//Cargar fila de la tabla Cliente
-
-
-
-
-
 //ingresar las filas de la tabla Cliente
 $("#btnIngresarCliente").click(ingresarCliente)
 
