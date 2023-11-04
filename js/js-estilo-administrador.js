@@ -1,23 +1,34 @@
 window.addEventListener("load", inicio);
+
 function inicio() {
     let url = "php/datos_clientes.php";
     fetch(url)
     .then(response => response.json())
     .then(data => {
-        console.log(data)
-        for(let i = 0; i < data.length;i++){
+        for(let i = 0; i < data.length; i++){
             $("#tabla1").append(` 
-            <tr id="`+i+`">
-                <td class="bordeUsuario">`+i+`</td>
-                <td class="bordeUsuario">`+data[i].id +`</td>
-                <td class="bordeUsuario">`+data[i].ci_rut +`</td>
-                <td class="bordeUsuario">`+data[i].email+`</td>
-            </tr>
+                <tr id="`+i+`">
+                    <td class="bordeUsuario">`+ data[i].id +`</td>
+                    <td class="bordeUsuario">`+ data[i].ci_rut +`</td>
+                    <td class="bordeUsuario">`+ data[i].email +`</td>
+                </tr>
             `);
         }
     })
     .catch(error => console.log(error))
 }
+$("#btnIngresarCliente").click(autorizarCliente)
+function autorizarCliente(){
+    let id = Number($("#tomarId").val())
+    let dato = {
+        id: id,
+        autorizar: "true"
+    }
+    $.post("php/autorizar_cliente.php",dato,function(res){
+        console.log(res);
+    })
+}
+       
 //Desaparece las tablas
 $("#tablaUsuario").css("display", "none");
 $("#tablaPedido").css("display", "none");
@@ -38,18 +49,6 @@ function mostrarTablaCliente() {
     $("#tablaUsuario").css("display", "block");
     $("#tablaPedido").css("display", "none");
     
-}
-//ingresar las filas de la tabla Cliente
-$("#btnIngresarCliente").click(ingresarCliente)
-
-function ingresarCliente() {
-    console.log("hola")
-    let ID = $("#tomarId").val();
-    let numeral = "#" + ID;
-    console.log(ID)
-    console.log(numeral)
-    console.log("")
-    $(numeral).css("display", "none");
 }
 
 

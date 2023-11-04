@@ -7,6 +7,13 @@ class Usuario extends Conexion {
     public $email;
     public $id;
 
+    public function __construct($id,$ci,$email,$clave) {
+        $this -> id = $id;
+        $this -> ci = $ci;
+        $this -> email = $email;
+        $this -> clave = $clave;
+    }
+
     public function getCi(){
         return $this -> ci;
     }
@@ -31,6 +38,22 @@ class Usuario extends Conexion {
     public function setId(){
         $this -> id = $id;
     }
+    public function ingresarUsuario(){
+        $this -> conectar();
+        $pre = mysqli_prepare($this->con,"SELECT ID_CLIENTE,AUTORIZADO FROM cliente WHERE EMAIL=? AND CLAVE=?");
+        $pre -> bind_param("ss",$this->email,$this->clave);
+        $pre -> execute();
+        $res = $pre -> get_result();
+        $res = $res -> num_rows;
+        if($res == "1"){
+            echo "true";
+        }else{
+            echo "false";
+        } 
+    
+    }
+    
+    
 }
 ?>
 

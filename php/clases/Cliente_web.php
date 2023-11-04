@@ -5,13 +5,14 @@ class Cliente_web extends Cliente {
     public $nombre;
     public $apellido;
 
-    public function __construct($id,$ci,$nombre,$apellido,$email,$telefono,$barrio,$esquina,$calle,$puerta,$autorizar){
+    public function __construct($id,$ci,$nombre,$apellido,$email,$telefono,$clave,$barrio,$esquina,$calle,$puerta,$autorizar){
         $this -> id = $id;
         $this -> ci = $ci;
         $this -> nombre = $nombre;
         $this -> apellido = $apellido;
         $this -> email = $email;
         $this -> telefono = $telefono;
+        $this -> clave = $clave;
         $this -> barrio = $barrio;
         $this -> esquina = $esquina;
         $this -> calle = $calle;
@@ -31,13 +32,12 @@ class Cliente_web extends Cliente {
         $this -> apellido = $apellido;
     }
     public function enviarDatos(){
-        $false = "false";
         //Metodo de conexion a la base de datos
         $conexion = new Conexion();
         $conexion -> conectar();
         //Cargar tabla cliente
-        $pre = mysqli_prepare($conexion->con, "INSERT INTO cliente (ID_CLIENTE,EMAIL,CALLE,N_PUERTA,ESQUINA,BARRIO,AUTORIZADO) VALUE (?,?,?,?,?,?,?)");
-        $pre->bind_param("ississs",$this->id,$this->email,$this->calle,$this->puerta,$this->esquina,$this->barrio,$this->autorizar);
+        $pre = mysqli_prepare($conexion->con, "INSERT INTO cliente (ID_CLIENTE,EMAIL,CALLE,N_PUERTA,ESQUINA,BARRIO,CLAVE,AUTORIZADO) VALUE (?,?,?,?,?,?,?,?)");
+        $pre->bind_param("ississss",$this->id,$this->email,$this->calle,$this->puerta,$this->esquina,$this->barrio,$this->clave,$this->autorizar);
         $pre->execute();
         //Cargar tabla cliente_web
         $preDos = mysqli_prepare($conexion->con,"INSERT INTO cliente_web (ID_CLIENTE,CEDULA_IDENTIDAD_CLIENTE,PRIMER_NOMBRE,PRIMER_APELLIDO) VALUE (?,?,?,?)");

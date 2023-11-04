@@ -13,7 +13,7 @@
     $clave = $_POST["clave"];
     $autorizar = "false";
 
-    $objCliente_web = new Cliente_web($id,$ci,$nombre,$apellido,$email,$telefono,$barrio,$esquina,$calle,$puerta,$autorizar);
+    $objCliente_web = new Cliente_web($id,$ci,$nombre,$apellido,$email,$telefono,$clave,$barrio,$esquina,$calle,$puerta,$autorizar);
     $objCliente_web -> enviarDatos();
     echo "Bien";
 ?>

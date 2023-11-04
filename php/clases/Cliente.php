@@ -9,6 +9,11 @@ class Cliente extends Usuario{
     public $esquina;
     public $barrio;
     public $autorizar;
+    
+    public function __construct($id,$autorizar) {
+        $this -> id = $id;
+        $this -> autorizar = $autorizar;
+    }
 
     public function getTelefono(){
         return $this -> telefono;
@@ -88,6 +93,12 @@ class Cliente extends Usuario{
             array_push($clientes, $cliente);
         }
         return $clientes;
+    }
+    public function autorizar(){
+        $this -> conectar();
+        $pre = mysqli_prepare($this->con,"UPDATE cliente SET AUTORIZADO=? WHERE ID_CLIENTE=?");
+        $pre -> bind_param("si",$this->autorizar,$this->id);
+        $pre->execute();
     }
 
 }

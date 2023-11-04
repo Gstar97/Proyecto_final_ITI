@@ -10,6 +10,7 @@ class Cliente_empresa extends Cliente {
         $this -> rut = $rut;
         $this -> email = $email;
         $this -> telefono = $telefono;
+        $this -> clave = $clave;
         $this -> calle = $calle;
         $this -> puerta = $puerta;
         $this -> esquina = $esquina;
@@ -29,8 +30,8 @@ class Cliente_empresa extends Cliente {
         $conexion = new Conexion();
         $conexion -> conectar();
         //Cargar tabla cliente
-        $pre = mysqli_prepare($conexion->con,"INSERT INTO cliente (ID_CLIENTE,EMAIL,CALLE,N_PUERTA,ESQUINA,BARRIO,AUTORIZADO) VALUE (?,?,?,?,?,?,?)");
-        $pre -> bind_param("ississs",$this->id,$this->email,$this->calle,$this->puerta,$this->esquina,$this->barrio,$this->autorizar);
+        $pre = mysqli_prepare($conexion->con,"INSERT INTO cliente (ID_CLIENTE,EMAIL,CALLE,N_PUERTA,ESQUINA,BARRIO,CLAVE,AUTORIZADO) VALUE (?,?,?,?,?,?,?,?)");
+        $pre -> bind_param("ississss",$this->id,$this->email,$this->calle,$this->puerta,$this->esquina,$this->barrio,$this->clave,$this->autorizar);
         $pre -> execute();
         //Cargar tabla cliente_empresa
         $preDos = mysqli_prepare($conexion->con,"INSERT INTO cliente_empresa (ID_CLIENTE,RUT) VALUE (?,?)");
