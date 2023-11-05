@@ -36,7 +36,7 @@ img[src="imagenes/titulo+empresa.png"]{
 #btnPedido:active{
     background:rgba(255,255,255, 0.2);
 }
-
+/*ingresar usuarios*/
 #tomarId{
     background:rgba(255,255,255, 0.2);
     border:1px solid #FFFFFF;
@@ -44,6 +44,27 @@ img[src="imagenes/titulo+empresa.png"]{
     border-radius:5px;
     transition:0.1s;
 }
+#btnIngresarCliente{
+    border:1px solid #FF6200;
+    background:transparent;
+    color:#FFFFFF;
+    border-radius:5px;
+}
+#btnIngresarCliente:active{
+    background:rgba(255, 98, 0, 0.2);
+
+}
+#btnIngresarPedido{
+    border:1px solid #FFFFFF;
+    background:transparent;
+    color:#FFFFFF;
+    border-radius:5px;
+}
+#btnIngresarPedido:active{
+    background:rgba(255,255,255, 0.2);
+
+}
+
 #btnIngresar{
     background:transparent;
     border:1px solid #FF6200;
@@ -103,18 +124,4 @@ img[src="imagenes/titulo+empresa.png"]{
 }
 .linkActualizar:active{
     background:rgba(255,255,255,0.2);
-}
-/*botoes para cambiar de tabla*/
-#btnIngresarCliente, #btnIngresarPedido{
-    background:transparent;
-    border:1px solid #FF6200;
-    color:#FFFFFF;
-    border-radius:5px;
-    transition:0.1s;
-}
-#btnIngresarCliente:hover, #btnIngresarPedido:hover{
-    box-shadow:0px 0px 10px #FF6200;
-}
-#btnIngresarCliente:active, #btnIngresarPedido:active{
-    background:rgba(255, 98, 0, 0.2);
 }

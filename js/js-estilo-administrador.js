@@ -5,6 +5,7 @@ function inicio() {
     fetch(url)
     .then(response => response.json())
     .then(data => {
+        console.log(data)
         for(let i = 0; i < data.length; i++){
             $("#tabla1").append(` 
                 <tr id="`+i+`">
@@ -20,6 +21,9 @@ function inicio() {
 $("#btnIngresarCliente").click(autorizarCliente)
 function autorizarCliente(){
     let id = Number($("#tomarId").val())
+    let numeral = "#"+id;
+    $(numeral).css("display", "none");
+    
     let dato = {
         id: id,
         autorizar: "true"
@@ -29,26 +33,36 @@ function autorizarCliente(){
     })
 }
        
-//Desaparece las tablas
+//Desaparece las tablas y botones
 $("#tablaUsuario").css("display", "none");
 $("#tablaPedido").css("display", "none");
+$("#usuario").css("display", "none");
 
+$("#btnIngresarCliente").css("display", "none");
+$("#btnIngresarPedido").css("display", "none");
+$("#tomarId").css("display", "none");
 //Cambiar a la tabla  Pedido
 $("#btnPedido").click (mostrarTablaPedido) ;
 function mostrarTablaPedido(){
+    $("#tomarId").css("display", "block");
+    $("#btnIngresarPedido").css("display", "block");
+    $("#btnIngresarCliente").css("display", "none");
     $("#tablaPedido").css({"animation":"aparecerTabla 0.5s ease-out 0s normal"});
     $("#tablaUsuario").css("display", "none");
     $("#tablaPedido").css("display", "block");
+    $("#usuario").css("display", "block");
 }
 //Cambiar a la tabla  Usuario
 $("#btnCliente").click (mostrarTablaCliente);
 
 function mostrarTablaCliente() {
-    
+    $("#tomarId").css("display", "block");
+    $("#btnIngresarPedido").css("display", "none");
+    $("#btnIngresarCliente").css("display", "block");
     $("#tablaUsuario").css({"animation":"aparecerTabla 0.5s ease-out 0s normal"});
     $("#tablaUsuario").css("display", "block");
     $("#tablaPedido").css("display", "none");
-    
+    $("#usuario").css("display", "block");
 }
 
 

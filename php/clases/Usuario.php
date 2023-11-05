@@ -44,11 +44,32 @@ class Usuario extends Conexion {
         $pre -> bind_param("ss",$this->email,$this->clave);
         $pre -> execute();
         $res = $pre -> get_result();
-        $res = $res -> num_rows;
-        if($res == "1"){
-            echo "true";
+        $existe_cli = $res -> num_rows;
+        $row = $res->fetch_assoc();
+        if($existe_cli == "1"){
+            $cliente = [
+                "id" => $row['ID_CLIENTE'],
+                "autorizado" => $row['AUTORIZADO'],
+                "existe" => "true",
+            ];
+            echo json_encode($cliente); 
         }else{
-            echo "false";
+            $preDos = mysqli_prepare($this->con,"SELECT CI_USUARIO,ROL FROM usuario WHERE EMAIL=? AND CONTRASENIA=?");
+            $preDos -> bind_param("is",$this->email,$this->clave);
+            $preDos -> execute();
+            $res = $preDos -> get_result();
+            $existe_us = $res-> num_rows;
+            $row = $res->fetch_assoc();
+            if($existe_us == "1"){
+                $usaurio = [
+                "ci" => $row['CI_USAURIO'],
+                "rol" => $row['ROL'],
+                "existe" => "true",
+                ];
+                echo json_encode($usaurio);
+            }else {
+                echo json_encode(false);
+            }
         } 
     
     }

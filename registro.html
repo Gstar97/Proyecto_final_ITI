@@ -43,7 +43,7 @@
                 <h4>Cliente</h4>
                 <input class="input mt-2 col-10" type="text" maxlength="8" placeholder="Cedula Identidad" id="txtCedula_Web">
                 <input class="input mt-2 col-10" type="text" placeholder="Email" id="txtEmail_Web">
-                <input class="input mt-2 col-10" type="text " placeholder="Telefono" id="txtTelefono_Web">
+                <input class="input mt-2 col-10" type="text " maxlength="9" placeholder="Telefono" id="txtTelefono_Web">
 
                 <input class="input mt-3 col-5" type="text" placeholder="Nombre" id="txtNombre">
                 <input class="input mt-3 col-5" type="text" placeholder="Apellido" id="txtApellido">
@@ -57,16 +57,15 @@
                 <input class="input mt-1 col-5" type="text " placeholder="Repetir contraseña" id="txtConfirmarClave_Web">
                 
                 <input class="my-3 py-2 col-4"type="submit" value="REGISTRARSE" id="BtnClienteRegistrar" id="BtnClienteRegistrar">
-                <p class="col-12">Aceptar <a href="#">Terminos y condiciones</a><input type="checkbox" id="aceptarTerminos" class="ms-3"></p>
+                <p class="col-12">Aceptar <a href="#">Terminos y condiciones</a><input type="checkbox" id="aceptarTerminosCliente" class="ms-3"></p>
             </section>
     
             <section id="FormularioEmpresa" class="col-8 col-sm-7 col-md-5 col-lg-4 mt-3">
                 <h4>Empresa</h4>
-                <input class="input1 mt-2 col-10" type="text " placeholder="Cedula Identidad" id="txtCedula_Empresa">
+                <input class="input1 mt-2 col-10" type="text " placeholder="Rut" id="txtRut">
                 <input class="input1 mt-2 col-10" type="text" placeholder="Email" id="txtEmail_Empresa">
-                <input class="input1 mt-2 col-10" type="text " placeholder="Telefono" id="txtTelefono_Empresa">
-                <input class="input1 mt-2 mb-1 col-10" type="text" placeholder="Rut" id="txtRut">
-                
+                <input class="input1 mt-2 col-10" type="text " maxlength="9" placeholder="Telefono" id="txtTelefono_Empresa">
+    
                 <input class="input1 mt-2 col-5" type="text " placeholder="Barrio" id="txtBarrio_Empresa">
                 <input class="input1 mt-2 col-5" type="text" placeholder="Calle" id="txtCalle_Empresa">
                 <input class="input1 mt-1 col-5" type="text" placeholder="N°Puerta" id="txtPuerta_Empresa">
@@ -76,11 +75,19 @@
                 <input class="input1 mt-1 col-5" type="text " placeholder="Repetir contraseña" id="txtConfirmarClave_Empresa">
 
                 <input class="my-3 py-2 col-4"type="submit" value="REGISTRARSE" id="BtnEmpresaRegistrar">
-                <p class="col-12">Aceptar <a href="#">Terminos y condiciones</a><input type="checkbox" id="aceptarTerminos" class="ms-3"></p>
+                <p class="col-12">Aceptar <a href="#">Terminos y condiciones</a><input type="checkbox" id="aceptarTerminosEmpresa" class="ms-3"></p>
             </section>
             
-
         </section>
+        <section class="row my-5"></section>
+        <section class="row my-5"></section>
+        <section class="row my-5"></section>
+        <section class="row my-5"></section>
+        <section class="row my-5"></section>
+        <section class="row my-5"></section>
+        <section class="row my-5"></section>
+        <section class="row my-5"></section>   
+       
         <section class="row mx-0 justify-content-center">
             <p class="col-2 py-1 text-center" id="mensaje">Hola</p>
         </section>

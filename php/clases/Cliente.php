@@ -54,7 +54,7 @@ class Cliente extends Usuario{
     public static function datosWeb(){
         $conexion = new Conexion();
         $conexion->conectar();
-        $pre = mysqli_prepare($conexion->con, "SELECT cliente.ID_CLIENTE, cliente.EMAIL, cliente_web.CEDULA_IDENTIDAD_CLIENTE FROM cliente INNER JOIN cliente_web ON cliente.ID_CLIENTE = cliente_web.ID_CLIENTE");
+        $pre = mysqli_prepare($conexion->con, "SELECT cliente.ID_CLIENTE, cliente.EMAIL, cliente_web.CEDULA_IDENTIDAD_CLIENTE FROM cliente INNER JOIN cliente_web ON cliente.ID_CLIENTE = cliente_web.ID_CLIENTE WHERE cliente.AUTORIZADO='false'");
         if (!$pre) {
             // Manejar el error de preparación de la consulta.
             die("Error de preparación de consulta: " . mysqli_error($conexion->con));
@@ -76,7 +76,7 @@ class Cliente extends Usuario{
     public static function datosEmpresa(){
         $conexion = new Conexion();
         $conexion->conectar();
-        $pre = mysqli_prepare($conexion->con, "SELECT cliente.ID_CLIENTE, cliente.EMAIL, cliente_empresa.RUT FROM cliente INNER JOIN cliente_empresa ON cliente.ID_CLIENTE = cliente_empresa.ID_CLIENTE");
+        $pre = mysqli_prepare($conexion->con, "SELECT cliente.ID_CLIENTE, cliente.EMAIL, cliente_empresa.RUT FROM cliente INNER JOIN cliente_empresa ON cliente.ID_CLIENTE = cliente_empresa.ID_CLIENTE WHERE cliente.AUTORIZADO='false'");
         if (!$pre) {
             // Manejar el error de preparación de la consulta.
             die("Error de preparación de consulta: " . mysqli_error($conexion->con));
