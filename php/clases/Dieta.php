@@ -7,7 +7,7 @@
         public $stock_min;
         public $stock_max;
         public $stock_real;
-        
-        
     }
+
+    //cargar 
 ?>

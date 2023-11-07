@@ -100,6 +100,15 @@ class Cliente extends Usuario{
         $pre -> bind_param("si",$this->autorizar,$this->id);
         $pre->execute();
     }
+    public static function cantCliente(){
+        $conexion = new Conexion();
+        $conexion->conectar();
+        $pre = mysqli_prepare($conexion->con,"SELECT * FROM cliente");
+        $pre -> execute();
+        $res = $pre->get_result();
+        $cantUsuarios = $res -> num_rows;
+        return $cantUsuarios;
+    }
 
 }
 ?>

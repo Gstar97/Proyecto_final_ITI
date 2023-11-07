@@ -28,7 +28,6 @@ function ingresarFormularioEmpresa() {
   });
 }
 //registrarse en web
-let contadorID = 0;
 let Web = () => {
   let ci = Number($("#txtCedula_Web").val());
   let email = $("#txtEmail_Web").val();
@@ -78,7 +77,6 @@ let Web = () => {
     $("#mensaje").html("La contraseña no coincide");
   } else if($("#aceptarTerminosCliente").is(":checked")){
     let datoWeb = {
-      id: contadorID,
       ci: ci,
       email: email,
       telefono: telefono,
@@ -95,7 +93,6 @@ let Web = () => {
     $("#mensaje").css("display", "block");
     $("#mensaje").html("Acepta nuestras Condiciones y servicios");
   }
-  contadorID++;
 };
 $("#BtnClienteRegistrar").click(Web);
 //registrarse en empresa
@@ -139,7 +136,6 @@ let Empresa = () => {
     $("#mensaje").html("La contraseña no coincide");
   } else if($("#aceptarTerminosEmpresa").is(":checked")){
     let datoEmpresa = {
-      id: contadorID,
       email: email,
       telefono: telefono,
       rut: rut,
@@ -154,7 +150,6 @@ let Empresa = () => {
     $("#mensaje").css("display", "block");
     $("#mensaje").html("Acepta nuestras Condiciones y servicios");
   }
-  contadorID++;
 };
 $("#BtnEmpresaRegistrar").click(Empresa);
 
