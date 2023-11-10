@@ -3,44 +3,40 @@ window.addEventListener("load", inicio);
 function inicio() {
     let url = "php/datos_clientes.php";
     fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-        for(let i = 0; i < data.length; i++){
-            $("#tabla1").append(` 
-                <tr id="`+i+`">
-                    <td class="bordeUsuario">`+ data[i].id +`</td>
-                    <td class="bordeUsuario">`+ data[i].ci_rut +`</td>
-                    <td class="bordeUsuario">`+ data[i].email +`</td>
-                </tr>
-            `);
-        }
-    })
-    .catch(error => console.log(error))
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            for (let i = 0; i < data.length; i++) {
+                $("#tabla1").append(`
+                    <tr id="${data[i].id}">
+                        <td class="bordeUsuario py-1">${data[i].id}</td>
+                        <td class="bordeUsuario py-1">${data[i].ci_rut}</td>
+                        <td class="bordeUsuario py-1">${data[i].email}</td>
+                        <td class="bordeUsuario py-1"> <input type="button" class="btnIngresarCliente mx-2 my-1" id="btn${data[i].id}" value="Autorizar"></td>
+                    </tr>
+                `);
+                $(`#btn${data[i].id}`).click(() => autorizarCliente(data[i].id));
+            }
+        });
 }
-$("#btnIngresarCliente").click(autorizarCliente)
-function autorizarCliente(){
-    let id = Number($("#tomarId").val())
+
+function autorizarCliente(id) {
+    console.log(id);
     let numeral = "#"+id;
     $(numeral).css("display", "none");
-    
-    let dato = {
+    let data = {
         id: id,
         autorizar: "true"
     }
-    $.post("php/autorizar_cliente.php",dato,function(res){
+    $.post("php/autorizar_cliente.php",data, function(res) {
         console.log(res);
-    })
+    });
+    
 }
-       
+
 //Desaparece las tablas y botones
 $("#tablaUsuario").css("display", "none");
 $("#tablaPedido").css("display", "none");
-$("#usuario").css("display", "none");
-
-$("#btnIngresarCliente").css("display", "none");
-$("#btnIngresarPedido").css("display", "none");
-$("#tomarId").css("display", "none");
 //Cambiar a la tabla  Pedido
 $("#btnPedido").click (mostrarTablaPedido) ;
 function mostrarTablaPedido(){
@@ -50,7 +46,7 @@ function mostrarTablaPedido(){
     $("#tablaPedido").css({"animation":"aparecerTabla 0.5s ease-out 0s normal"});
     $("#tablaUsuario").css("display", "none");
     $("#tablaPedido").css("display", "block");
-    $("#usuario").css("display", "block");
+   
 }
 //Cambiar a la tabla  Usuario
 $("#btnCliente").click (mostrarTablaCliente);

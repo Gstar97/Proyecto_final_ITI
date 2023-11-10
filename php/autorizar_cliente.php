@@ -5,5 +5,4 @@ $id = $_POST["id"];
 $autorizar = $_POST["autorizar"];
 $autorizar = new Cliente($id,$autorizar);
 $autorizar->autorizar(); 
-
 ?>

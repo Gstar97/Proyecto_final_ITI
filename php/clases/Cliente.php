@@ -109,6 +109,54 @@ class Cliente extends Usuario{
         $cantUsuarios = $res -> num_rows;
         return $cantUsuarios;
     }
+    public function datosPerfil(){
+        $this -> conectar();
+        //extrae datos de tabla cliente
+        $pre = mysqli_prepare($this->con,"SELECT * FROM cliente WHERE ID_CLIENTE=?");
+        $pre -> bind_param("i",$this->id);
+        $pre -> execute();
+        $res = $pre->get_result();
+        $row = $res->fetch_assoc();
+        //extrae datos de tabla cliente_web
+        $preWeb = mysqli_prepare($this->con,"SELECT * FROM cliente_web WHERE ID_CLIENTE=?");
+        $preWeb -> bind_param("i",$this->id);
+        $preWeb -> execute();
+        $resWeb = $preWeb -> get_result();
+        $rowWeb = $resWeb -> fetch_assoc();
+        //ectrae datos de tabla cliente_empresa
+        $preEmp = mysqli_prepare($this->con,"SELECT * FROM cliente_empresa WHERE ID_CLIENTE=?");
+        $preEmp -> bind_param("i",$this->id);
+        $preEmp -> execute();
+        $resEmp = $preEmp -> get_result();
+        $rowEmp = $resEmp -> fetch_assoc(); 
+        if($resWeb -> num_rows > 0){
+            $datoWeb = [
+                'email' => $row['EMAIL'],
+                'calle' => $row['CALLE'],
+                'puerta' => $row['N_PUERTA'],
+                'esquina' => $row['ESQUINA'],
+                'barrio' => $row['BARRIO'],
+                'ci' => $rowWeb['CEDULA_IDENTIDAD_CLIENTE'],
+                'nombre' => $rowWeb['PRIMER_NOMBRE'],
+                'apellido' => $rowWeb['PRIMER_APELLIDO'],
+                'cliente' => "web",
+            ];
+            echo json_encode($datoWeb);
+        }else if ($resEmp -> num_rows > 0){
+            $datoEmp = [   
+                'email' => $row['EMAIL'],
+                'calle' => $row['CALLE'],
+                'puerta' => $row['N_PUERTA'],
+                'esquina' => $row['ESQUINA'],
+                'barrio' => $row['BARRIO'],
+                'rut' => $rowEmp['RUT'],
+                'cliente' => "empresa",
+            ];
+            echo json_encode($datoEmp);
+        }       
+        
+        
+    }
 
 }
 ?>

@@ -21,9 +21,11 @@
           <img src="imagenes/titulo+empresa.png" alt="Logo" width="100" class="d-inline-block align-text-center">
         </section>
         <ul class="navbar-nav">
-          <li class="nav-item me-2">
-            <a href="login.html" class="linkActualizar nav-link px-2 py-1 me-3 d-flex">Cerrar sesion</a>
-            <a href="administrador.html" class="linkActualizar nav-link px-2 py-1 me-3 d-flex">Actualizar</a>
+          <li class="nav-item">
+            <a href="administrador.html" class="linkActualizar nav-link px-2 py-1 me-3">Actualizar</a>
+          </li>
+          <li class="nav-item">
+            <a href="login.html" class="linkActualizar nav-link px-2 py-1 me-3">Cerrar sesion</a>
           </li>
         </ul>
       </section>
@@ -37,25 +39,21 @@
 
   </section>
   
-  <section class="row mx-0 mt-3 justify-content-center text-center">
-    <input type="text" id="tomarId" placeholder="ID" class="col-5 col-sm-5 col-md-3 col-lg-2 mx-2 py-2 mt-2">
-    <input type="button" id="btnIngresarCliente" value="Ingresar Cliente" class="col-5 col-sm-5 col-md-3 col-lg-2 mx-2 py-2 mt-2">
-    <input type="button" id="btnIngresarPedido" value="Ingresar Pedido" class="col-5 col-sm-5 col-md-3 col-lg-2 mx-2 py-2 mt-2">
-  </section>
-  
   <!--Tabla Del Usuario-->
   <form method="POST" action="php/administrador/mostrar.php">
     <section id="tablaUsuario" class="row mx-1 mt-5 justify-content-center text-center">
       <table id="tabla1" class="col-6 justify-content-center text-center mx-auto">
         <tr>
             <td class="bordeUsuario col-4 col-sm-1 col-md-1 col-lg-1">ID</td>
-            <td class="bordeUsuario col-4 col-sm-2 col-md-2 col-lg-2">CI/RUT</td>
+            <td class="bordeUsuario col-2 col-sm-2 col-md-2 col-lg-2">CI/RUT</td>
             <td class="bordeUsuario col-4 col-sm-3 col-md-3 col-lg-2">EMAIL</td>
+            <td class="bordeUsuario col-2 col-sm-2 col-md-2 col-lg-1"></td>
         </tr>
        
       </table>
     </section>
   </form>
+ 
   <!--Tabla pedido-->
   <section id="tablaPedido" class="row mx-1 mt-5 justify-content-center text-center">
     <table id="tabla2">

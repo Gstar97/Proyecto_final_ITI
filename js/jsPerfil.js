@@ -7,6 +7,9 @@ function inicio(){
         id : usuario.id
     }
     console.log(usuario)
-    $.post("")
+    $.post("php/datos_perfil.php",id,function(res){
+        cliente = JSON.parse(res);
+        console.log(cliente);
+    })
    
 }

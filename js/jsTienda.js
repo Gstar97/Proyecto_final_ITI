@@ -15,8 +15,8 @@ function inicio(){
         for (let i = 0; i < menu.length; i++){ 
         $("#zonaMenu").append(`
         <section id="`+menu[i].id_menu+`" class="`+menu[i].tipo+` baseMenu col-8 col-sm-6 col-md-3 col-lg-2 mx-1 mx-md-3 mx-lg-3 py-3 mt-3 justify-content-center"> 
-            <h4 class="text-center">`+menu[i].nombre+`</h4>
-            <h5 class="text-center">`+menu[i].precio+`U$</h5>
+            <h4 class="precioTienda text-center">`+menu[i].nombre+`</h4>
+            <h5 class="precioTienda text-center my-3 mx-5">$ `+menu[i].precio+`</h5>
             <p>stock: `+menu[i].stock_real +`</p>  
             <p>Dieta `+menu[i].tipo+`</p> 
             <input type="button" class="btnCarrito col-12 py-2" id="btn`+menu[i].id_menu+`" value="Agregar al carrito"> 

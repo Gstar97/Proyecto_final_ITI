@@ -35,4 +35,19 @@ body{
     border:1px solid red;
     background:rgb(255, 0, 0, 0.2);
 }
+.btnEliminar:hover{
+    box-shadow:0px 0px 5px red;
+}
 
+/*carrito mostrar*/
+#mostrarTotal{
+    color:#FFFFFF;
+    border:2px solid #FFFFFF;
+    background:rgba(255, 255, 255, 0.2);
+}
+/*agregar Stock*/
+.input[type="number"]{
+    color:#FFFFFF;
+    border:2px solid #FFFFFF;
+    background:rgba(255, 255, 255, 0.2);
+}
