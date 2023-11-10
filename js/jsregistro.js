@@ -3,6 +3,11 @@ $("#mensaje").css("display", "none");
 //Desaparecer las plantillas
 $("#FormularioEmpresa").css("display", "none");
 $("#FormularioCliente").css("display", "none");
+//Modal
+$("#fondo").css("z-index", "-1");
+$("#fondo").css("background", "transparent");
+$("#modal").css("display", "none");
+
 // Click para abrir el formulario cliente
 $("#BtnCliente").click(ingresarFormularioCliente);
 function ingresarFormularioCliente() {
@@ -51,7 +56,7 @@ let Web = () => {
   } else if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email)) {
     $("#mensaje").css("display", "block");
     $("#mensaje").html("Por favor ingrese un email valido");
-  } else if (!/[0-9]/.test(ci) || !/^\d{9}$/.test(telefono)) {
+  } else if (!/[0-9]/.test(ci) || !/^\d{8}$/.test(telefono)) {
     $("#mensaje").css("display", "block");
     $("#mensaje").html("Por favor ingrese un telefono valido");
   } else if (/[0-9]/.test(nombre)) {
@@ -113,7 +118,7 @@ let Empresa = () => {
   } else if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email)) {
     $("#mensaje").css("display", "block");
     $("#mensaje").html("Por favor ingrese un email valido");
-  } else if (!/[0-9]/.test(telefono) || !/^\d{9}$/.test(telefono)) {
+  } else if (!/[0-9]/.test(telefono) || !/^\d{8}$/.test(telefono)) {
     $("#mensaje").css("display", "block");
     $("#mensaje").html("Por favor ingrese un telefono valido");
   } else if (!/[0-9]/.test(rut)) {
@@ -155,13 +160,37 @@ $("#BtnEmpresaRegistrar").click(Empresa);
 
 let bd_empresa = (datos) => {
   $.post("php/bd_empresa.php", datos, function (respuesta) {
-    console.log(respuesta);
+    if (respuesta.trim().toLowerCase() == "listo"){
+      $("#FormularioEmpresa").css("display", "none");
+      $("#FormularioCliente").css("display", "none");
+      $("#mensaje").css("display", "none")
+      $("#fondo").css("z-index", "10");
+      $("#fondo").css("background", "rgba(0, 0, 0, 0.8)"); 
+      $("#modal").css("display", "block");
+      $("#mensajeAutorizado").html("Su cuenta a sido registrada, espere hasta que lo autorizemos")
+    }else{
+      $("#mensaje").css("display", "block");
+      $("#mensaje").html(respuesta);
+    }
   });
 };
 
 let bd_web = (datos) => {
-  console.log(datos);
   $.post("php/bd_web.php", datos, function (respuesta) {
-    console.log(respuesta);
+    console.log(respuesta)
+    if (respuesta.trim().toLowerCase() == "listo"){
+      $("#FormularioEmpresa").css("display", "none");
+      $("#FormularioCliente").css("display", "none");
+      $("#mensaje").css("display", "none")
+      $("#fondo").css("z-index", "10");
+      $("#fondo").css("background", "rgba(0, 0, 0, 0.8)"); 
+      $("#modal").css("display", "block");
+      $("#mensajeAutorizado").html("Su cuenta a sido registrada, espere hasta que lo autorizemos")
+    }else{
+      $("#mensaje").css("display", "block");
+      $("#mensaje").html(respuesta);
+    }
   });
 };
+
+

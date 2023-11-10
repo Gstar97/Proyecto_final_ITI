@@ -1,6 +1,6 @@
 body{
-    background:#111111 url(../imagenes/fondos/fondo-carrito.jpg) no-repeat !important;
-    background-size:150% !important;
+    background:#111111 url(../imagenes/fondos/fondos_usuarios.jpg) no-repeat !important;
+    background-size:100% !important;
 }
 .bordeCuenta{
     border-radius:10px;
@@ -23,9 +23,16 @@ body{
 .btnCarrito:active{
     background:rgba(255, 255, 255, 0.2);
 }
-/*tabla*/
-.bordeCarrito{
+/*Tabla del carrito*/
+.bordePedido{
+    border:1px solid #FF6200;
+    background:rgba(255, 98, 0, 0.2);
     color:#FFFFFF;
-    border:1px solid #FFFFFF;
-    background:rgba(255,255,255, 0.2);
 }
+.btnEliminar{
+    color:#FFFFFF;
+    border-radius:10px;
+    border:1px solid red;
+    background:rgb(255, 0, 0, 0.2);
+}
+

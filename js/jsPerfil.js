@@ -1,11 +1,12 @@
 window.addEventListener("load", inicio);
 
 function inicio(){
-    let i;
-
-    $("#mostrarEmail").html("Email:"+i);
-    $("#mostrarCalle").html("Calle:"+i);
-    $("#mostrarNPuerta").html("NPuerta:"+i);
-    $("#mostrarEsquina").html("Esquina:"+i);
-    $("#mostrarBarrio").html("Barrio:"+i);
+    let datos = sessionStorage.getItem('usuario');
+    let usuario = JSON.parse(datos);
+    let id = {
+        id : usuario.id
+    }
+    console.log(usuario)
+    $.post("")
+   
 }

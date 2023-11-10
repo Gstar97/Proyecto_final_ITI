@@ -1,5 +1,6 @@
 body{
-    background:#1D1D1D;
+    background:#111111 url(../imagenes/fondos/fondos_usuarios.jpg) no-repeat !important;
+    background-size:100% !important;
 }
 /*Menu*/
 .header{

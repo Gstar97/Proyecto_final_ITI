@@ -13,13 +13,19 @@ function ValidarDatos() {
       clave: clave,
     };
     $.post("php/login.php", datos, function (res) {
+      console.log(res)
       usuario = JSON.parse(res);
       if (res.trim().toLowerCase() === "false") {
         $("#mensaje").css("display", "block");
         $("#mensaje").html("La Clave o el Email es incorrecto");
       } else if (usuario.existe === "true") {
-        sessionStorage.setItem('usuario', JSON.stringify(usuario));
-        window.location.href = "index.html"
+        if (usuario.rol == "cliente"){
+          sessionStorage.setItem('usuario', JSON.stringify(usuario));
+          window.location.href = "index.html"
+        }else if (usuario.rol == "administrador"){
+          window.location.href = "administrador.html"
+        }
+        
       }
     });
   }

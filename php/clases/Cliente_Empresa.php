@@ -58,7 +58,7 @@ class Cliente_empresa extends Cliente {
         $preTres = mysqli_prepare($conexion->con, "INSERT INTO cliente_telefono (ID_CLIENTE,TELEFONO) VALUE (?,?)");
         $preTres -> bind_param("ii",$this->id,$this->telefono);
         $preTres -> execute();
-        echo "Registro exitoso";
+        echo "listo";
         }
     }
     

@@ -50,6 +50,7 @@ class Usuario extends Conexion {
             $cliente = [
                 "id" => $row['ID_CLIENTE'],
                 "autorizado" => $row['AUTORIZADO'],
+                "rol" => "cliente",
                 "existe" => "true",
             ];
             echo json_encode($cliente); 
@@ -62,7 +63,7 @@ class Usuario extends Conexion {
             $row = $res->fetch_assoc();
             if($existe_us == "1"){
                 $usaurio = [
-                "ci" => $row['CI_USAURIO'],
+                "ci" => $row['CI_USUARIO'],
                 "rol" => $row['ROL'],
                 "existe" => "true",
                 ];

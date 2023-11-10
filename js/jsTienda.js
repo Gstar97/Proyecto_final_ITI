@@ -1,144 +1,97 @@
+
 window.addEventListener("load", inicio);
 
-$("#btnAbrirModal").click(abrirModalCreacion);
-$("#cerrarFondoCreacion").click(cerrarFondoCreacion);
-$("#btnCrearMenu").click(crearVianda);
-$("#btnBuscarTienda").click(filtroDieta)
-$("#btnCarrito").click(abrirModalStock)
-$("#cerrarFondoStock").click(cerrarFondoStock);
-
-let modalBase = $("#modalBase");
-let modalStock = $("#modalStock");
-let fondoModal = $("#fondoModal");
-$(modalStock).css("display", "none");
-$(modalBase).css("display", "none");
-$(fondoModal).css("background-color", "transparent");
-
 function inicio(){
-    let viandas = [
-        {imagen: "imagenes/viandas/alubias_blancas.jpg", nombre: "Anchoas con pure", precio: 190.000, dieta: "celiacos"},
-        {imagen: "imagenes/viandas/alubias_blancas.jpg", nombre: "Pollo con salame", precio: 123.000, dieta: "vegana"},
-        {imagen: "imagenes/viandas/alubias_blancas.jpg", nombre: "Aluminio a la parrilla", precio: 156.000, dieta: "vegetariana"},
-        {imagen: "imagenes/viandas/alubias_blancas.jpg", nombre: "Sopa de murcielago", precio: 1, dieta: "ovolacteovegetariana"},
-        {imagen: "imagenes/viandas/alubias_blancas.jpg", nombre: "Jamon con dulce de leche", precio: 190.000, dieta: "ovovegetaria"}
-    ];
-    for (let i = 0; i < viandas.length; i++) {
-        $("#zonaMenu").append(`
-        <section class="`+viandas[i].dieta+` baseMenu col-8 col-sm-6 col-md-3 col-lg-2 mx-1 mx-md-3 mx-lg-3 py-3 mt-3 justify-content-center"> 
-            <img class="w-100 mb-2" src="`+viandas[i].imagen+`">
-            <h4 class="text-center">`+viandas[i].nombre+`</h4>
-            <h5 class="text-center">`+viandas[i].precio+`U$</h5>
-            <p>No Disponible</p>  
-            <p>Dieta `+viandas[i].dieta+`</p> 
-            <input type="button" class="btnCarrito col-12 py-2" id="btn" value="Agregar al carrito"> 
-        </section>
-        `
-        );
-        console.log(viandas[i]);
+    let buscador = $("#buscador").val();
+    let dieta = $("#selectDietas").val();
+    let dato = {
+        buscador: buscador,
+        dieta: dieta
     }
-
-
-    
-}
-
-// Click para abrir el modal Stock
-function abrirModalStock(){
-    $(modalStock).css("display", "block");
-    $(modalBase).css("display", "none");
-    $(fondoModal).css("background-color", "rgba(0, 0, 0, 0.8)");
-    $(fondoModal).css("z-index", "9");
-}
-// Clic sobre <span> para cerrar el modal Stock
-function cerrarFondoStock(){
-    $(modalStock).css("display", "none");
-    $(modalBase).css("display", "none");
-    $(fondoModal).css("background-color", "transparent");
-    $(fondoModal).css("z-index", "-1");
-}
-// Clic para abrir el modal Creacion de menus
-function abrirModalCreacion(){
-    $(modalStock).css("display", "none");
-    $(modalBase).css("display", "block");
-    $(fondoModal).css("background-color", "rgba(0, 0, 0, 0.8)");
-    $(fondoModal).css("z-index", "9");
-}
-// Clic sobre <span> para cerrar el modal creacion de menus
-function cerrarFondoCreacion(){
-    $(modalStock).css("display", "none");
-    $(modalBase).css("display", "none");
-    $(fondoModal).css("background-color", "transparent");
-    $(fondoModal).css("z-index", "-1");
-}
-//Creacion de las viandas
-function crearVianda(){
-    let imagen = ($("#txtImagen").val());
-    let nombre = ($("#txtNombre").val());
-    let precio = ($("#txtPrecio").val());
-    let asignarDieta = ($("#asignDieta").val());
-
-    if(imagen == "" && nombre == ""&& precio == ""){ //si algun input no esta completo no funcionara
-    }else{
+    $("#zonaMenu").html("");
+    $.post("php/tienda.php",dato,function(res){
+        menu = JSON.parse(res);
+        console.log(menu)
+        for (let i = 0; i < menu.length; i++){ 
         $("#zonaMenu").append(`
-        <section class="baseMenu col-8 col-sm-6 col-md-3 col-lg-2 mx-1 mx-md-3 mx-lg-3 py-3 mt-3 justify-content-center" id="`+asignarDieta+`">
-            <img class="w-100 mb-2" src="`+imagen+`">
-            <h4 class="text-center">`+nombre+`</h4>
-            <h5 class="text-center">`+precio+`U$</h5>
-            <p>No Disponible</p> 
-            <p>Dieta `+asignarDieta+`</p> 
-            <input type="button" class="btnCarrito col-12 py-2" id="btn" value="Agregar al carrito"> 
-        </section>
-        `
-        );
+        <section id="`+menu[i].id_menu+`" class="`+menu[i].tipo+` baseMenu col-8 col-sm-6 col-md-3 col-lg-2 mx-1 mx-md-3 mx-lg-3 py-3 mt-3 justify-content-center"> 
+            <h4 class="text-center">`+menu[i].nombre+`</h4>
+            <h5 class="text-center">`+menu[i].precio+`U$</h5>
+            <p>stock: `+menu[i].stock_real +`</p>  
+            <p>Dieta `+menu[i].tipo+`</p> 
+            <input type="button" class="btnCarrito col-12 py-2" id="btn`+menu[i].id_menu+`" value="Agregar al carrito"> 
+        </section> `);
+             $(`#btn${menu[i].id_menu}`).click(() => mostrar(menu[i]));
+        }
+    })
+    function mostrar(menu) {
+        let menus = JSON.parse(sessionStorage.getItem('carrito')) || [];
+        let datos = {
+            id: menu.id_menu,
+            nombre: menu.nombre,
+            precio: menu.precio,
+            stock: menu.stock_real,
+            tipo: menu.tipo,
+        };
+        // Verificar si el elemento ya existe en el carrito
+        let existeDato = menus.find(item => item.id === datos.id);
+        if (existeDato) {
+        } else {
+            menus.push(datos);
+            sessionStorage.setItem('carrito', JSON.stringify(menus));
+        }
     }
 }
-
-/*filtro de Dietas*/
-function filtroDieta() {
+$("#btnBuscarTienda").click(filtrodieta)
+//Filtro de dietas
+function filtrodieta(){
     let selectDietas = ($("#selectDietas").val());
     switch (selectDietas) {
-        case "todo_dietas":
-            $(".celiacos").css("display", "block");
-            $(".vegana").css("display", "block");
-            $(".vegetariana").css("display", "block");
-            $(".ovovegetaria").css("display", "block");
-            $(".ovolacteovegetariana").css("display", "block");
-        break;
-        case "celiacos":
-            $(".celiacos").css("display", "block");
-            $(".vegana").css("display", "none");
-            $(".vegetariana").css("display", "none");
-            $(".ovovegetaria").css("display", "none");
-            $(".ovolacteovegetariana").css("display", "none");
-        break;
-        case "vegana":
-            $(".celiacos").css("display", "none");
-            $(".vegana").css("display", "block");
-            $(".vegetariana").css("display", "none");
-            $(".ovovegetaria").css("display", "none");
-            $(".ovolacteovegetariana").css("display", "none");
-        break;
-        case "vegetariana":
-            $(".celiacos").css("display", "none");
-            $(".vegana").css("display", "none");
-            $(".vegetariana").css("display", "block");
-            $(".ovovegetaria").css("display", "none");
-            $(".ovolacteovegetariana").css("display", "none");
-        break;
-        case "ovovegetaria":
-            $(".celiacos").css("display", "none");
-            $(".vegana").css("display", "none");
-            $(".vegetariana").css("display", "none");
-            $(".ovovegetaria").css("display", "block");
-            $(".ovolacteovegetariana").css("display", "none");
-        case "ovolacteovegetariana":
-            $(".celiacos").css("display", "none");
-            $(".vegana").css("display", "none");
-            $(".vegetariana").css("display", "none");
-            $(".ovovegetaria").css("display", "none");
-            $(".ovolacteovegetariana").css("display", "block");
-        break;
+    case "todo":
+        $(".Celiacos").css("display", "block");
+        $(".Vegano").css("display", "block");
+        $(".Vegetariana").css("display", "block");
+        $(".Ovovegetariana").css("display", "block");
+        $(".Ovolacteovegetariana").css("display", "block");
+    break;
+    case "celiaco":
+        console.log(selectDietas)
+        $(".Celiacos").css("display", "block");
+        $(".Vegano").css("display", "none");
+        $(".Vegetariana").css("display", "none");
+        $(".Ovovegetariana").css("display", "none");
+        $(".Ovolacteovegetariana").css("display", "none");
+    break;
+    case "vegano":
+        $(".Celiacos").css("display", "none");
+        $(".Vegano").css("display", "block");
+        $(".Vegetariana").css("display", "none");
+        $(".Ovovegetariana").css("display", "none");
+        $(".Ovolacteovegetariana").css("display", "none");
+    break;
+    case "vegetariana":
+        $(".Celiacos").css("display", "none");
+        $(".Vegano").css("display", "none");
+        $(".Vegetariana").css("display", "block");
+        $(".Ovovegetariana").css("display", "none");
+        $(".Ovolacteovegetariana").css("display", "none");
+    break;
+    case "ovovegetariana":
+        $(".Celiacos").css("display", "none");
+        $(".Vegano").css("display", "none");
+        $(".Vegetariana").css("display", "none");
+        $(".Ovovegetariana").css("display", "block");
+        $(".Ovolacteovegetariana").css("display", "none");
+
+    case "ovolacteovegetariana":
+        $(".Celiacos").css("display", "none");
+        $(".Vegano").css("display", "none");
+        $(".Vegetariana").css("display", "none");
+        $(".Ovovegetariana").css("display", "none");
+        $(".Ovolacteovegetariana").css("display", "block");
+    break;
+        
     }
-}
     
 
-
+}
