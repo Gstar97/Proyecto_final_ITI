@@ -117,6 +117,12 @@ class Cliente extends Usuario{
         $pre -> execute();
         $res = $pre->get_result();
         $row = $res->fetch_assoc();
+        //extrae datos de tabla telefono
+        $preTel = mysqli_prepare($this->con,"SELECT * FROM cliente_telefono WHERE ID_CLIENTE=?");
+        $preTel -> bind_param("i",$this->id);
+        $preTel -> execute();
+        $resTel = $preTel -> get_result();
+        $rowTel = $resTel -> fetch_assoc();
         //extrae datos de tabla cliente_web
         $preWeb = mysqli_prepare($this->con,"SELECT * FROM cliente_web WHERE ID_CLIENTE=?");
         $preWeb -> bind_param("i",$this->id);
@@ -139,6 +145,7 @@ class Cliente extends Usuario{
                 'ci' => $rowWeb['CEDULA_IDENTIDAD_CLIENTE'],
                 'nombre' => $rowWeb['PRIMER_NOMBRE'],
                 'apellido' => $rowWeb['PRIMER_APELLIDO'],
+                'telefono' => $rowTel['TELEFONO'],
                 'cliente' => "web",
             ];
             echo json_encode($datoWeb);
@@ -150,6 +157,7 @@ class Cliente extends Usuario{
                 'esquina' => $row['ESQUINA'],
                 'barrio' => $row['BARRIO'],
                 'rut' => $rowEmp['RUT'],
+                'telefono' => $rowTel['TELEFONO'],
                 'cliente' => "empresa",
             ];
             echo json_encode($datoEmp);

@@ -7,6 +7,10 @@ body{
     border:1px solid #FFFFFF;
     background:rgba(255,255,255, 0.2);
 }
-.datos{
+#datos{
+    color:#FFFFFF;
+    border-radius:10px;
+}
+h4{
     color:#FFFFFF;
 }

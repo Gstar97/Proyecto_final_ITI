@@ -2,7 +2,7 @@ window.addEventListener("load", inicio);
 
 function inicio() {
     let menus = JSON.parse(sessionStorage.getItem('carrito'));
-    let total;
+    let total = 0;
     for (let i = 0; i < menus.length; i++) {
         $("#tabla1").append(`
             <tr id="`+menus[i].id+`">
@@ -18,6 +18,7 @@ function inicio() {
         total += menus[i].precio;
     }
     $("#mostrarTotal").html("$ "+total);
+    console.log(total)
 }
 function eliminar(id){
 let numeral = "#"+id;

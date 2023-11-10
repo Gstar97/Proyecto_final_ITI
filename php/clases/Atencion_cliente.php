@@ -13,6 +13,3 @@ class Atencion_cliente extends Usuario {
     }
 }
 ?>
-    
-
-  
