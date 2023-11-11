@@ -6,7 +6,7 @@ class Conexion {
 
     public function conectar(){
 
-        $this->con = mysqli_connect("localhost","root","","bugslayer");
+        $this->con = mysqli_connect("bd","root","bugslayer","bugslayer");
 
     }
 }

@@ -56,7 +56,7 @@ let Web = () => {
   } else if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email)) {
     $("#mensaje").css("display", "block");
     $("#mensaje").html("Por favor ingrese un email valido");
-  } else if (!/[0-9]/.test(ci) || !/^\d{8}$/.test(telefono)) {
+  } else if (!/[0-9]/.test(telefono) || !/\d{9}$/.test(telefono)) {
     $("#mensaje").css("display", "block");
     $("#mensaje").html("Por favor ingrese un telefono valido");
   } else if (/[0-9]/.test(nombre)) {
@@ -118,7 +118,7 @@ let Empresa = () => {
   } else if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email)) {
     $("#mensaje").css("display", "block");
     $("#mensaje").html("Por favor ingrese un email valido");
-  } else if (!/[0-9]/.test(telefono) || !/^\d{8}$/.test(telefono)) {
+  } else if (!/[0-9]/.test(telefono) || !/\d{9}$/.test(telefono)) {
     $("#mensaje").css("display", "block");
     $("#mensaje").html("Por favor ingrese un telefono valido");
   } else if (!/[0-9]/.test(rut)) {
