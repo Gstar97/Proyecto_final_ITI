@@ -14,6 +14,7 @@ body{
     border:2px solid #FFFFFF;
     color:#FFFFFF;
     background:transparent;
+    text-decoration:none;
 }
 .btnCarrito:hover{
     color:#FFFFFF;
