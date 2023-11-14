@@ -72,11 +72,9 @@ class Usuario extends Conexion {
                 echo json_encode(false);
             }
         } 
-    
     }
-    
-    
-}
+    }
+   
 ?>
 
 

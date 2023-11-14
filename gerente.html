@@ -21,85 +21,66 @@
       <nav class="navbar navbar-expand-md">
         <section class="container-fluid">
           <section class="navbar-brand">
-            <img
-              src="imagenes/logo+empresa.png"
-              alt="Logo"
-              width="80"
-              class="d-inline-block align-text-center"
-            />
-            <img
-              src="imagenes/titulo+empresa.png"
-              alt="Logo"
-              width="100"
-              class="d-inline-block align-text-center"
-            />
+            <img src="imagenes/logo+empresa.png" alt="Logo" width="80" class="d-inline-block align-text-center" />
+            <img src="imagenes/titulo+empresa.png" alt="Logo" width="100" class="d-inline-block align-text-center" />
           </section>
           <ul class="navbar-nav">
             <li class="nav-item me-2">
-              <input
-                type="button"
-                value="Cerrar sesion"
-                id="btnCerrarSesion"
-                class="nav-link px-2 py-1 me-3 d-flex"
-              />
+              <a href="administrador.html" class="btn-link nav-link py-2 px-3 mx-3 my-2">Administrador</a>
+            </li>
+            <li class="nav-item me-2">
+              <a href="chef.html" class="btn-link nav-link py-2 px-3 mx-3 my-2">Chef</a>
+            </li>
+            <li class="nav-item me-2">
+              <a class="btn-link nav-link py-2 px-3 mx-3 my-2 d-flex" href="login.html">Cerrar sesion</a>
             </li>
           </ul>
         </section>
       </nav>
     </header>
     <section class="row mx-0 justify-content-center text-center">
-      <h4 class="my-5">Paginas disponibles</h4>
-      <a
-        href="administrador.html"
-        class="btn-link py-2 px-3 mx-3 my-2 col-4 col-sm-4 col-md-4 col-lg-2"
-        >Administrador</a
-      >
-      <a
-        href="chef.html"
-        class="btn-link py-2 px-3 mx-3 my-2 col-4 col-sm-4 col-md-4 col-lg-2"
-        >Chef</a
-      >
+        <input type="button" value="crear menu" id="botonMenu" class="col-sm-4 col-md-2 col-lg-2 mx-2 mt-5">
+        <input type="button" value="crear usuario" id="botonUsuario" class="col-sm-4 col-md-2 col-lg-2 mx-2 mt-5">
     </section>
     <section class="row mx-0 justify-content-center text-center">
-      <h4 class="mt-5">Crear Menus</h4>
-      <input
-        type="text"
-        placeholder="URL imagen"
-        class="col-sm-4 col-md-4 col-lg-2 mx-2 mt-5"
-        id="txtImagen"
-      />
-      <input
-        type="text"
-        placeholder="Nombre"
-        class="col-sm-4 col-md-4 col-lg-2 mx-2 mt-5"
-        id="txtNombre"
-      />
-      <input
-        type="text"
-        placeholder="Precio"
-        class="col-sm-4 col-md-4 col-lg-2 mx-2 mt-5"
-        id="txtPrecio"
-      />
+      <section id="tablaCrearMenu" class="mt-5 py-3 col-8 col-sm-8 col-md-4 col-lg-2">
+        <h4>Crear Menus</h4>
+        <input type="text" placeholder="Nombre" class="col-12 mt-5" id="txtNombre" />
 
-      <select
-        type="text"
-        id="asignDieta"
-        class="col-sm-2 col-md-2 col-lg-2 mx-2 mt-5"
-      >
-        <option value="celiacos">Celiacos</option>
-        <option value="vegana">Vegana</option>
-        <option value="vegetariana">Vegetariana</option>
-        <option value="ovovegetaria">Ovovegetaria</option>
-        <option value="ovolacteovegetariana">Ovolacteovegetariana</option>
-      </select>
+        <input type="text" placeholder="Tiempo de elaboracion" class="col-12 mt-5" id="txtElaboracion"/> 
+        <select id="asignarDieta" class="col-12 mt-5">
+          <option value="Celiacos">Celiacos</option>
+          <option value="Vegano">Vegana</option>
+          <option value="Vegetariana">Vegetariana</option>
+          <option value="Ovovegetariana">Ovovegetaria</option>
+          <option value="Ovolacteovegetariana">Ovolacteovegetariana</option>
+        </select>
+        <input type="text" placeholder="Precio" class="col-12 mt-5" id="txtPrecio"/>
+        <input type="text" placeholder="Stock minimo" class="col-12 mt-5" id="txtMinimo"/>
+        <input type="text" placeholder="Stock maximo" class="col-12 mt-5" id="txtMaximo"/>
+        
+        <input type="button" value="crear" id="btnCrearMenu" class="col-8 mt-3">
+      </section>
+      <section id="tablaCrearUsuario" class="mt-5 py-3 col-8 col-sm-8 col-md-4 col-lg-2">
+        <h4>Crear Usuario</h4>
+        <input type="text"  id="txtCI" placeholder="Cedula" class="col-12 mt-5" maxlength="8">
+        <input type="text" id="txtEmail" placeholder="email" class="col-12 mt-5">
+        <input type="text" id="txtClave" placeholder="Contraseña" class="col-12 mt-5">
+        <select type="text" id="asignarRol" class="col-12 mt-5">
+          <option value="gerente">Gerente</option>
+          <option value="administrador">Administrador</option>
+          <option value="atencion al cliente">Atencion al cliente</option>
+          <option value="informatico">Informatico</option>
+          <option value="chef">Chef</option>
+        </select>
+        <input type="button" value="crear" id="btnCrearUsuario" class="col-8 mt-3">
+      </section>
     </section>
-    <section class="row mx-0 justify-content-center text-center">
-      <input
-        type="button"
-        value="Crear"
-        class="col-2 col-sm-2 col-md-2 col-lg-2 mt-3"
-        id="btnCrearMenu"
-      />
-    </section>
+    <section class="row mx-0 justify-content-center text-center mt-4">
+      <p id="aviso"></p>
+    <section>
+   
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="js/jsGerente.js"></script>
   </body>
 </html>

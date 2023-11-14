@@ -11,7 +11,6 @@ function inicio(){
     $("#zonaMenu").html("");
     $.post("php/tienda.php",dato,function(res){
         menu = JSON.parse(res);
-        console.log(menu)
         for (let i = 0; i < menu.length; i++){ 
         $("#zonaMenu").append(`
         <section id="`+menu[i].id_menu+`" class="`+menu[i].tipo+` baseMenu col-8 col-sm-6 col-md-3 col-lg-2 mx-1 mx-md-3 mx-lg-3 py-3 mt-3 justify-content-center"> 
@@ -25,21 +24,17 @@ function inicio(){
         }
     })
     function mostrar(menu) {
-        let menus = JSON.parse(sessionStorage.getItem('carrito')) || [];
-        let datos = {
-            id: menu.id_menu,
+        let usuario = sessionStorage.getItem('usuario');
+            usuario = JSON.parse(usuario);
+        let menus = {
+            id_usuario: usuario.id,  
+            id_menu: menu.id_menu,
             nombre: menu.nombre,
             precio: menu.precio,
             stock: menu.stock_real,
             tipo: menu.tipo,
         };
-        // Verificar si el elemento ya existe en el carrito
-        let existeDato = menus.find(item => item.id === datos.id);
-        if (existeDato) {
-        } else {
-            menus.push(datos);
             sessionStorage.setItem('carrito', JSON.stringify(menus));
-        }
     }
 }
 $("#btnBuscarTienda").click(filtrodieta)

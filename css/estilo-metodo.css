@@ -42,7 +42,10 @@ p{
     background:rgba(255, 255, 255, 0.2);
     font-size:25px;
 }
-
+#mensajeCompra{
+    color:red;
+    text-shadow:0px 0px 10px red;
+}
 /*modal*/
 #fondo{
     z-index:10;

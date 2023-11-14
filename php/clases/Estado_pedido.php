@@ -27,6 +27,6 @@ class Estado_pedido extends Pedido{
     public function setFecha_final(){
         $this -> fecha_final = $fecha_final;
     }
-
+    
 }
 ?>

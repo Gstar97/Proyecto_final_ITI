@@ -1,5 +1,7 @@
 $("#btnComprar").click(TomarDatos);
-
+$("#fondo").css("z-index", "-1");
+$("#fondo").css("background", "transparent");
+$("#modal").css("display", "none");
 function TomarDatos(){
     let titular = $("#titular").val();
     let tarjeta = $("#tarjeta").val();
@@ -10,34 +12,39 @@ function TomarDatos(){
 function validarDatos(titular,tarjeta,fechaVencimineto,cvc){
     let fecha = new Date().toISOString().slice(0, 10);
     if(titular == "" || tarjeta == "" || fechaVencimineto == "" || cvc == ""){
-        console.log("Complete los campos vacios");
+        $("#mensajeCompra").html("Complete los campos vacios");
     }else if (/[0-9]/.test(titular)){
-        console.log("El campo del titualr no debe ser numerico");
+        $("#mensajeCompra").html("El campo del titualr no debe ser numerico");
     }else if (!/[0-9]/.test(tarjeta) || !/\d{8}$/.test(tarjeta)){
-        console.log("Numero de tarjeta invalido");
+        $("#mensajeCompra").html("Numero de tarjeta invalido");
     }else if (fecha > fechaVencimineto){
-        console.log("Esta tarjeta esta vencida");
+        $("#mensajeCompra").html("Esta tarjeta esta vencida");
     }else if (!/[0-9]/.test(cvc) || !/\d{3}$/.test(cvc)){
-        console.log("Codijo invalido")        
+        $("#mensajeCompra").html("Codijo invalido")        
     }else {
         enviarPedido()
     }
+    
 }
 function enviarPedido(){
-    let usuario = sessionStorage.getItem('usuario');
     let pedido = sessionStorage.getItem('carrito');
     pedido = JSON.parse(pedido)
-    usuario = JSON.parse(usuario);
-    console.log(pedido);
-    console.log(pedido)
-    let id = {
-        id :usuario.datos
+    datos = {
+        id_usuario: pedido.id_usuario,
+        id_menu: pedido.id_menu,
+        precio: pedido.precio,
+        stock: pedido.stock,
     }
-    $.post("")
+    $.post("php/pedido.php",datos,function(res){
+        console.log(res)
+        sessionStorage.removeItem('carrito');
+        $("#fondo").css("z-index", "10");
+        $("#fondo").css("background", "rgba(0, 0, 0, 0.8)");
+        $("#modal").css("display", "block");
+    })
+    
 }
 
 
 
-$("#fondo").css("z-index", "-1");
-$("#fondo").css("background", "transparent");
-$("#modal").css("display", "none");
+

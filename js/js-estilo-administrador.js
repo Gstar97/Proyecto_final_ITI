@@ -17,9 +17,30 @@ function inicio() {
                 `);
                 $(`#btn${data[i].id}`).click(() => autorizarCliente(data[i].id));
             }
+            pedido()
         });
 }
-
+function pedido(){
+    let url = "php/datos_pedidos.php";
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        for (let i = 0; i < data.length; i++){
+            $("#tabla2").append(`
+            <tr id="${data[i].id_pedido}">
+                <td class="bordePedido">${data[i].id_cliente}</td>
+                <td class="bordePedido">${data[i].id_pedido}</td>
+                <td class="bordePedido">${data[i].id_menu}</td>
+                <td class="bordePedido">${data[i].precio}</td>
+                <td class="bordePedido">${data[i].fecha}</td>
+                <td class="bordePedido"><input type="button" class="btnIngresarPedido mx-2 my-1" id="btn${data[i].id_pedido}" value="Autorizar"></td>
+            </tr>
+        `)
+        $(`#btn${data[i].id_pedido}`).click(() => autorizarPedido(data[i].id_pedido));
+        
+        }
+    })
+}
 function autorizarCliente(id) {
     console.log(id);
     let numeral = "#"+id;
@@ -28,10 +49,22 @@ function autorizarCliente(id) {
         id: id,
         autorizar: "true"
     }
+    console.log(data.autorizar)
     $.post("php/autorizar_cliente.php",data, function(res) {
         console.log(res);
     });
     
+}
+function autorizarPedido(id){
+    let numeral = "#"+id;
+    $(numeral).css("display","none");
+    let datos = {
+        id: id,
+        autorizar: "true"
+    }
+    $.post("php/autorizar_pedido.php",datos,function(res){
+        console.log(res)
+    })
 }
 
 //Desaparece las tablas y botones
@@ -50,7 +83,6 @@ function mostrarTablaPedido(){
 }
 //Cambiar a la tabla  Usuario
 $("#btnCliente").click (mostrarTablaCliente);
-
 function mostrarTablaCliente() {
     $("#tomarId").css("display", "block");
     $("#btnIngresarPedido").css("display", "none");

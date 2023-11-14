@@ -57,6 +57,27 @@ class Menu extends Dieta{
         }
         return $menus;
     }
+    public function crearMenu(){
+        $this -> conectar();
+        $pre = mysqli_prepare($this->con,"INSERT INTO menu (ID_MENU,NOMBRE,TIEMPO_DE_ELABORACION,TIPO_DE_MENU,PRECIO,STOCK_MIN,STOCK_MAX,STOCK_REAL) VALUE (?,?,?,?,?,?,?,?)");
+        $pre -> bind_param("isisiiii",$this->id_menu,$this->nombre,$this->tiempo_elaboracion,$this->tipo,$this->precio,$this->stock_min,$this->stock_max,$this->stock_real);
+        $pre -> execute();
+    }
+    public static function cantMenu(){
+        $conexion = new Conexion();
+        $conexion -> conectar();
+        $pre = mysqli_prepare($conexion->con,"SELECT * FROM menu");
+        $pre -> execute();
+        $res = $pre -> get_result();
+        $cantMenu = $res -> num_rows;
+        return $cantMenu;
+    }
+    public function agregarStock(){
+        $this -> conectar();
+        $pre = mysqli_prepare($this->con,"UPDATE menu SET STOCK_REAL=? WHERE ID_MENU=?");
+        $pre -> bind_param("ii",$this->stock_real,$this->id_menu);
+        $pre -> execute();
+    }
     
 }
 

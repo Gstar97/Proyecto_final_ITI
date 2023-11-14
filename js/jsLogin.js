@@ -24,8 +24,11 @@ function ValidarDatos() {
           window.location.href = "index.html"
         }else if (usuario.rol == "administrador"){
           window.location.href = "administrador.html"
+        }else if (usuario.rol == "gerente"){
+          window.location.href = "gerente.html"
+        }else if (usuario.rol == "chef"){
+          window.location.href = "chef.html"
         }
-        
       }
     });
   }

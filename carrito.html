@@ -80,10 +80,16 @@
     <section class="bordeCuenta py-3 px-5 col-10 col-sm-8 col-md-6 col-lg-4 text-center align-items-center">
       <h1 class="text-center">Total del carrito</h1>
       <h2 class="text-center my-3 py-1 mx-5" id="mostrarTotal"></h2>
-      <a class="btnCarrito py-2" href="metodoDePago.html">Finalizar compra</a>
+      <input type="submit" value="Finalizar Compra" class="btnCarrito py-2 col-10 col-md-5 col-lg-5" id="btnFinalizarCompra">
     </section>
   </section>
-  
+  <!--Modal-->
+  <section class="row mx-0 fixed-top justify-content-center align-items-center" id="fondoModal">
+    <section id="modal" class="col-10 col-sm-7 col-md-5 col-lg-4 text-center py-4 justify-content-center align-items-center">
+      <p id="mensajeAdvertencia">El carrito esta vacio</p>
+      <span id="cerrarModal" class="py-2 px-1">Cerrar ventana</span>
+    </section>  
+  </section>
   <section class="row mx-2 my-3 justify-content-center" >
     <table id="tabla1" class="col-8 justify-content-center text-center mx-auto">
       <tr>
@@ -96,8 +102,8 @@
       
     </table>
   </section>
-    <script src="js/jquery-3.6.4.min.js"></script>
-    <script src="js/jsCarrito.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <script src="js/jquery-3.6.4.min.js"></script>
+  <script src="js/jsCarrito.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>

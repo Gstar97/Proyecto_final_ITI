@@ -37,7 +37,7 @@ h4{
 #btnCerrarSesion:active{
     background:rgba(255,255,255,0.2);
 }
-input:placeholder{
+input::placeholder{
     color:#111111;
 }
 input{
@@ -46,17 +46,36 @@ input{
 input:hover{
     border:2px solid #FF6200;
 }
+/*Tabla*/
 
-#btnCrearMenu{
+/*Menus*/
+#tablaCrearMenu{
     border-radius:10px;
     border:1px solid #FF6200;
-    background:transparent;
-    color:#FFFFFF;
-    transition:0.2s;
-}
-#btnCrearMenu:hover{
-    box-shadow:0px 0px 10px #FF6200;
-}
-#btnCrearMenu:active{
     background:rgba(255, 98, 0, 0.2);
+}
+#tablaCrearUsuario{
+    border-radius:10px;
+    border:1px solid #FFFFFF;
+    background:rgba(255,255,255,0.2);
+}
+#btnCrearUsuario{
+    border-radius:5px;
+    border:1px solid #FF6200;
+    background:transparent;
+}
+#btnCrearUsuario:hover{
+    background:rgba(255, 98, 0, 0.2);
+}
+#btnCrearMenu{
+    border-radius:5px;
+    border:1px solid #FFFFFF;
+    background:transparent;
+}
+#btnCrearUsuario:hover{
+    background:rgba(255,255,255,0.2);
+}
+#aviso{
+    color:red;
+    text-shadow:0px 0px 10px red;
 }
